@@ -1,0 +1,36 @@
+commands/
+    UsersController.php // Консольное управление пользователями
+components/
+    widgets/
+        Alert.php
+config/
+    common.php
+    params.php
+    params-local.php
+mail/
+    layouts/
+migrations/
+    m140916_150445_create_user_table.php // Миграция таблицы user
+modules    /
+    user/
+        controllers/
+            DefaultController
+        models/
+            EmailConfirm.php // Подтверждение Email адреса
+            LoginForm.php
+            PasswordResetRequestForm.php // Модель запроса сброса пароля
+            PasswordResetForm.php // Модель сброса пароля
+            SignupForm.php
+            User.php // Модель данных для таблицы user
+        mails/
+            emailConfirm.php // Писмо подтверждения регестрации
+            passwordReset.php
+        views/
+            default/
+                login.php // Форма входа
+                passwordResetRequest.php // Форма запроса сброса пароля
+                passwordReset.php // Форма сброса пароля
+                signup.php
+views/
+    layouts/
+        main.php
