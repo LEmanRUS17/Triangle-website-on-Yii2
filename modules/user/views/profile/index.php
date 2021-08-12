@@ -21,5 +21,10 @@ use yii\widgets\DetailView;
             ],
         ]) ?>
 
+        <div class="form-group">
+            <a class="btn btn-primary" href="<?= yii\helpers\Url::toRoute(['/user/profile/update']) ?>"><?= Yii::t('app', 'VIEW_USER_UP') ?></a>
+            <a class="btn btn-primary" href="<?= yii\helpers\Url::toRoute(['/user/profile/password-change']) ?>"><?= Yii::t('app', 'VIEW_USER_UP_PASSWORD') ?></a>
+        </div>
+
     </div>
 </section>

@@ -54,6 +54,11 @@ class DefaultController extends Controller
         ];
     }
 
+    public function actionIndex()
+    {
+        return $this->redirect(['profile/index'], 301);
+    }
+
     public function actionLogin() // Вход в акаунт
     {
         $this->view->title = Yii::t('app', 'TITLE_LOGIN');

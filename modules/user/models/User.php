@@ -35,18 +35,27 @@ class User extends ActiveRecord implements IdentityInterface
         return 'user';
     }
 
+    //!
+    public function scenarios()
+    {
+        return [
+            self::SCENARIO_DEFAULT => ['username', 'email', 'status'],
+        ];
+    }
+    //!
+
     public function rules() // Правила валидации
     {
         return [
-            ['username', 'required'],                                                                              // Имя пользователя | Обязательно
-            ['username', 'match', 'pattern' => '#^[\w_-]+$#is'],                                                   // Имя пользователя |
-            ['username', 'unique', 'targetClass' => self::class, 'message' => 'Это имя пользователя уже занято.'], // Имя пользователя | Проверка на уникальность
-            ['username', 'string', 'min' => 2, 'max' => 255],                                                      // Имя пользователя | Строка, минимальный размер 2, максимальный размер 255
+            ['username', 'required'],                                                                                                  // Имя пользователя | Обязательно
+            ['username', 'match', 'pattern' => '#^[\w_-]+$#is'],                                                                       // Имя пользователя |
+            ['username', 'unique', 'targetClass' => self::class, 'message' => Yii::t('app', 'MESSAGE_USER_USERNAME')], // Имя пользователя | Проверка на уникальность
+            ['username', 'string', 'min' => 2, 'max' => 255],                                                                          // Имя пользователя | Строка, минимальный размер 2, максимальный размер 255
 
-            ['email', 'required'],                                                                                      // Email | Обязателен
-            ['email', 'email'],                                                                                         // Email | Тип поля: email
-            ['email', 'unique', 'targetClass' => self::class, 'message' => 'Этот адрес электронной почты уже занят .'], // Email | Проверка на уникальность
-            ['email', 'string', 'max' => 255],                                                                          // Email | Строка, максимальный размер 255
+            ['email', 'required'],                                                                                               // Email | Обязателен
+            ['email', 'email'],                                                                                                  // Email | Тип поля: email
+            ['email', 'unique', 'targetClass' => self::class, 'message' => Yii::t('app', 'MESSAGE_USER_EMAIL')], // Email | Проверка на уникальность
+            ['email', 'string', 'max' => 255],                                                                                   // Email | Строка, максимальный размер 255
 
             ['status', 'integer'],                                             // Статус | Целое число
             ['status', 'default', 'value' => self::STATUS_ACTIVE],             // Статус | Значение по умолчанию: STATUS_ACTIVE
@@ -57,12 +66,12 @@ class User extends ActiveRecord implements IdentityInterface
     public function attributeLabels() // Значение атрибутов
     {
         return [
-            'id'         => 'ID',
-            'created_at' => 'Создан',
-            'updated_at' => 'Обновлён',
-            'username'   => 'Имя пользователя',
-            'email'      => 'Email',
-            'status'     => 'Статус',
+            'id'         => Yii::t('app', 'ATTRIBUTE_USER_ID'),
+            'created_at' => Yii::t('app', 'ATTRIBUTE_USER_CREATED_AT'),
+            'updated_at' => Yii::t('app', 'ATTRIBUTE_USER_UD_DATED_AT'),
+            'username'   => Yii::t('app', 'ATTRIBUTE_USER_USERNAME'),
+            'email'      => Yii::t('app', 'ATTRIBUTE_USER_EMAIL'),
+            'status'     => Yii::t('app', 'ATTRIBUTE_USER_STATUS'),
         ];
     }
 
@@ -74,9 +83,9 @@ class User extends ActiveRecord implements IdentityInterface
     public static function getStatusesArray() // Получить список статусов
     {
         return [
-            self::STATUS_BLOCKED => 'Заблокирован',
-            self::STATUS_ACTIVE  => 'Активен',
-            self::STATUS_WAIT    => 'Ожидает подтверждения',
+            self::STATUS_BLOCKED => Yii::t('app', 'STATUS_BLOCKED'),
+            self::STATUS_ACTIVE  => Yii::t('app', 'STATUS_ACTIVE'),
+            self::STATUS_WAIT    => Yii::t('app', 'STATUS_WAIT'),
         ];
     }
 
