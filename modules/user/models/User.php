@@ -66,12 +66,16 @@ class User extends ActiveRecord implements IdentityInterface
     public function attributeLabels() // Значение атрибутов
     {
         return [
-            'id'         => Yii::t('app', 'ATTRIBUTE_USER_ID'),
-            'created_at' => Yii::t('app', 'ATTRIBUTE_USER_CREATED_AT'),
-            'updated_at' => Yii::t('app', 'ATTRIBUTE_USER_UD_DATED_AT'),
-            'username'   => Yii::t('app', 'ATTRIBUTE_USER_USERNAME'),
-            'email'      => Yii::t('app', 'ATTRIBUTE_USER_EMAIL'),
-            'status'     => Yii::t('app', 'ATTRIBUTE_USER_STATUS'),
+            'id'                  => Yii::t('app', 'ATTRIBUTE_USER_ID'),
+            'created_at'          => Yii::t('app', 'ATTRIBUTE_USER_CREATED_AT'),
+            'updated_at'          => Yii::t('app', 'ATTRIBUTE_USER_UD_DATED_AT'),
+            'username'            => Yii::t('app', 'ATTRIBUTE_USER_USERNAME'),
+            'auth_key'            => Yii::t('app', 'ATTRIBUTE_AUTH_KEY'),
+            'email_confirm_token' => Yii::t('app', 'ATTRIBUTE_EMAIL_CONFIRM_TOKEN'),
+            'password_hash'       => Yii::t('app', 'ATTRIBUTE_PASSWORD_HASH'),
+            'password_reset_token'=> Yii::t('app', 'ATTRIBUTE_PASSWORD_RESET_TOKEN'),
+            'email'               => Yii::t('app', 'ATTRIBUTE_USER_EMAIL'),
+            'status'              => Yii::t('app', 'ATTRIBUTE_USER_STATUS'),
         ];
     }
 

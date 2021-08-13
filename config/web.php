@@ -1,12 +1,12 @@
 <?php
 
 $params = require __DIR__ . '/params.php';
-$db = require __DIR__ . '/db.php';
+$db     = require __DIR__ . '/db.php';
 
 $config = [
-    'id' => 'app',
-    'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log'],
+    'id'           => 'app',
+    'basePath'     => dirname(__DIR__),
+    'bootstrap'    => ['log'],
     'defaultRoute' => 'home/index',     // Дефолтный маршрут при запуске сайта
     'language'     => 'ru-RU',          // Язык
     'name'         => 'Triangle',       // Название сайта
@@ -21,6 +21,9 @@ $config = [
         ],
         'user' => [
             'class' => 'app\modules\user\Module',
+        ],
+        'admin' => [
+            'class' => 'app\modules\admin\Module',
         ],
     ],
     'components' => [

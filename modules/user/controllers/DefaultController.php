@@ -88,7 +88,7 @@ class DefaultController extends Controller
         $model = new SignUpForm(); // Обект модели SignUpForm
         if ($model->load(Yii::$app->request->post())) {
             if ($user = $model->signUp()) {
-                Yii::$app->getSession()->setFlash('success', 'Подтвердите ваш электронный адрес.');
+                Yii::$app->getSession()->setFlash('success', Yii::t('app', 'SUCCESS_EMAIL_ADDRESS_CONFIRM'));
                 return $this->goHome();
             }
         }
@@ -105,9 +105,9 @@ class DefaultController extends Controller
         }
 
         if ($model->confirmEmail()) {
-            Yii::$app->getSession()->setFlash('success', 'Спасибо! Ваш Email успешно подтверждён.');
+            Yii::$app->getSession()->setFlash('success', Yii::t('app', 'SUCCESS_EMAIL_SUCCESSFULLY_VERIFIED'));
         } else {
-            Yii::$app->getSession()->setFlash('error', 'Ошибка подтверждения Email.');
+            Yii::$app->getSession()->setFlash('error', Yii::t('app', 'ERROR_EMAIL_CONFIRMATION'));
         }
 
         return $this->goHome();
@@ -120,11 +120,11 @@ class DefaultController extends Controller
         $model = new PasswordResetRequestForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->sendEmail()) {
-                Yii::$app->getSession()->setFlash('success', 'Спасибо! На ваш Email было отправлено письмо со ссылкой на восстановление пароля.');
+                Yii::$app->getSession()->setFlash('success', Yii::t('app', 'SUCCESS_EMAIL_RESET_PASSWORD'));
 
                 return $this->goHome();
             } else {
-                Yii::$app->getSession()->setFlash('error', 'Извините. У нас возникли проблемы с отправкой.');
+                Yii::$app->getSession()->setFlash('error', Yii::t('app', 'ERROR_PROBLEM_SHIPPING'));
             }
         }
 
@@ -140,7 +140,7 @@ class DefaultController extends Controller
         }
 
         if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->resetPassword()) {
-            Yii::$app->getSession()->setFlash('success', 'Спасибо! Пароль успешно изменён.');
+            Yii::$app->getSession()->setFlash('success', Yii::t('app', 'SUCCESS_PASSWORD_SUCCESSFULLY'));
 
             return $this->goHome();
         }

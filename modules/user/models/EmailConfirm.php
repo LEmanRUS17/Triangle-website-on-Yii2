@@ -17,11 +17,11 @@ class EmailConfirm
     public function __construct($token, $config = []) // Создать модель формы по токену.
     {
         if (empty($token) || !is_string($token)) {
-        throw new InvalidArgumentException('Отсутствует код подтверждения.');
+        throw new InvalidArgumentException(Yii::t('app', 'ERROR_MISSING_CONFIRMATION_CODE'));
         }
         $this->_user = User::findByEmailConfirmToken($token);
         if (!$this->_user) {
-        throw new InvalidArgumentException('Неверный токен.');
+        throw new InvalidArgumentException(Yii::t('app', 'ERROR_INVALID_TOKEN'));
         }
         parent::__construct($config);
     }

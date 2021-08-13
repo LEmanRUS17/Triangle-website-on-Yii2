@@ -101,8 +101,13 @@ AppAsset::register($this);
                         <?php if (Yii::$app->user->isGuest) : ?>
                             <li><a href="<?= yii\helpers\Url::toRoute(['/user/default/login']) ?>"><?= Yii::t('app', 'NAV_LOGIN') ?></a></li>
                         <?php else : ?>
-                            <li><a href="<?= yii\helpers\Url::toRoute(['/user/default/logout']) ?>"><?= Yii::t('app', 'NAV_LOGOUT') ?> (<?= Yii::$app->user->identity->username ?>)</a></li>
-                            <li><a href="<?= yii\helpers\Url::toRoute(['/user/profile/index']) ?>"><?= Yii::t('app', 'NAV_PROFILE') ?></a></li>
+                        <li class="dropdown"><a href="<?= Url::toRoute(['/user/profile/index']) ?>"><?= Yii::t('app', 'NAV_PROFILE') ?> (<?= Yii::$app->user->identity->username ?>) <i class="fa fa-angle-down"></i></a>
+                            <ul role="menu" class="sub-menu">
+                                <li><a href="<?= yii\helpers\Url::toRoute(['/user/default/logout']) ?>"><?= Yii::t('app', 'NAV_LOGOUT') ?></a></li>
+                                <li><a href="<?= yii\helpers\Url::toRoute(['/user/profile/index']) ?>"><?= Yii::t('app', 'NAV_PROFILE') ?></a></li>
+                                <li><a href="<?= yii\helpers\Url::toRoute(['/admin/default/index']) ?>"><?= Yii::t('app', 'NAV_ADMIN') ?></a></li>
+                            </ul>
+                        </li>
                         <?php endif; ?>
                     </ul>
                 </div>
