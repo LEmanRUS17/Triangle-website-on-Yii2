@@ -47,7 +47,7 @@ return [
     'TITLE_USER_UPDATE'            => 'Редактирование пользователя',
     'TITLE_ADMIN'                  => 'Администрирование',
 
-    // Атрибуты модели User
+    // Атрибуты модели User (Модуль User)
     'ATTRIBUTE_USER_ID'              => 'ID',
     'ATTRIBUTE_USER_CREATED_AT'      => 'Создан',
     'ATTRIBUTE_USER_UD_DATED_AT'     => 'Обновлён',
@@ -58,6 +58,12 @@ return [
     'ATTRIBUTE_EMAIL_CONFIRM_TOKEN'  => 'Токен подтверждения электронной почты',
     'ATTRIBUTE_PASSWORD_HASH'        => 'Хэшированый пароль',
     'ATTRIBUTE_PASSWORD_RESET_TOKEN' => 'Токен смены пароля',
+
+    // Атрибуты модели User (Модуль Admin)
+    'ATTRIBUTE_USER_NEW_PASSWORD'    => 'Новый пароль',
+    'ATTRIBUTE_USER_REPEAT_PASSWORD' => 'Подтверждение пароля',
+    'ATTRIBUTE_USER_DATE_FROM'       => 'data_from', //!
+    'ATTRIBUTE_USER_DATE_TO'         => 'data_to', //!
 
     // Статусы модели User
     'STATUS_BLOCKED' => 'Заблокирован',
@@ -88,8 +94,8 @@ return [
     // Список пользователей:
     'USERS_PROFILE_CREATE_BUTTON'      => 'Добавить пользователя',
     'USERS_PROFILE_CREATE_BUTTON_SAVE' => 'Сохранить',
-    'USERS_PROFILE_UPDATE' => 'Редактировать',
-    'USERS_PROFILE_DELETE' => 'Удалить',
+    'USERS_PROFILE_UPDATE'             => 'Редактировать',
+    'USERS_PROFILE_DELETE'             => 'Удалить',
 
     // Администрирование:
     'ADMIN_USERS' => 'Список пользователей',

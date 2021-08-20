@@ -105,7 +105,9 @@ AppAsset::register($this);
                             <ul role="menu" class="sub-menu">
                                 <li><a href="<?= yii\helpers\Url::toRoute(['/user/default/logout']) ?>"><?= Yii::t('app', 'NAV_LOGOUT') ?></a></li>
                                 <li><a href="<?= yii\helpers\Url::toRoute(['/user/profile/index']) ?>"><?= Yii::t('app', 'NAV_PROFILE') ?></a></li>
-                                <li><a href="<?= yii\helpers\Url::toRoute(['/admin/default/index']) ?>"><?= Yii::t('app', 'NAV_ADMIN') ?></a></li>
+                                <?//php if(Yii::$app->user->can('admin')): ?>
+                                    <li><a href="<?= yii\helpers\Url::toRoute(['/admin/default/index']) ?>"><?= Yii::t('app', 'NAV_ADMIN') ?></a></li>
+                                <?//php endif; ?>
                             </ul>
                         </li>
                         <?php endif; ?>

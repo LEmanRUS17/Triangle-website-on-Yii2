@@ -11,7 +11,31 @@ mail/
     layouts/
 migrations/
     m140916_150445_create_user_table.php // Миграция таблицы user
-modules    /
+modules/
+    admin/
+        components/
+            grid/
+                ActionColumns.php // Настройки кнопок управления
+                linkColumn.php
+                SetColumn.php // Уневерсальная колонка статусов
+            UserStatusColumn.php // Отображение содержимого ячеек статуса
+        controllers
+            DefaultController.php
+            UserController.php
+        models/
+            User.php // Модель пользователя, наследуется от модели User модуля User
+            UserSearch.php // Модель поиска
+        views/
+            default/
+                index.php
+            user/
+                _form.php
+                _search.php
+                create.php // Добавление пальзователя
+                index.php // Спискок профилей пользователей
+                update.php // Обновление пользователя
+                view.php // Просмотр профиля ползователя
+        Module.php
     user/
         controllers/
             DefaultController

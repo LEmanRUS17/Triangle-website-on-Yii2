@@ -74,14 +74,15 @@ $config = [
             'showScriptName'      => false,
             'enableStrictParsing' => false, // Включить строгий разбор UPL. https://www.yiiframework.com/doc/api/2.0/yii-web-urlmanager#$enableStrictParsing-detail
             'rules' => [
-
+                //'' => 'main/default/index',
                 'contact' => 'main/contact/index',
                 '<_a:error>' => 'main/default/<_a>',
-                '<_a:(login|logout|signUp|email-confirm|request-password-reset|password-reset)>' => 'user/default/<_a>',
-                '<_m:[\w\-]+>/<_c:[\w\-]+>/<_a:[\w\-]+>/<id:\d+>' => '<_m>/<_c>/<_a>',
+                '<_a:(login|logout|signUp|confirm-email|request-password-reset|reset-password)>' => 'user/default/<_a>',
+
                 '<_m:[\w\-]+>/<_c:[\w\-]+>/<id:\d+>' => '<_m>/<_c>/view',
+                '<_m:[\w\-]+>/<_c:[\w\-]+>/<id:\d+>/<_a:[\w\-]+>' => '<_m>/<_c>/<_a>',
                 '<_m:[\w\-]+>' => '<_m>/default/index',
-                //'<_m:[\w\-]+>/<_c:[\w\-]+>' => '<_m>/<_c>/index',
+                '<_m:[\w\-]+>/<_c:[\w\-]+>' => '<_m>/<_c>/index',
             ],
         ],
         

@@ -1,8 +1,15 @@
 <?php
 
+use app\modules\admin\components\grid\LinkColumn;
+use app\modules\admin\components\grid\SetColumn;
+use app\modules\admin\components\UserStatusColumn;
+use app\modules\admin\models\User;
+use kartik\date\DatePicker;
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+use app\modules\admin\components\grid\ActionColumns;
+
 /* @var $this yii\web\View */
 /* @var $searchModel app\modules\admin\models\UserSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -25,20 +32,43 @@ use yii\widgets\Pjax;
             'dataProvider' => $dataProvider,
             'filterModel' => $searchModel,
             'columns' => [
-                ['class' => 'yii\grid\SerialColumn'],
-
                 'id',
-                'created_at',
-                'updated_at',
-                'username',
-                'auth_key',
+                [
+                    'filter' => DatePicker::widget([
+                        'model' => $searchModel,
+                        'attribute' => 'date_from',
+                        'attribute2' => 'date_to',
+                        'type' => DatePicker::TYPE_RANGE,
+                        'separator' => '-',
+                        'pluginOptions' => ['format' => 'yyyy-mm-dd']
+                    ]),
+                    'attribute' => 'created_at',
+                    'format' => 'datetime',
+                ],
+                [
+                    'class' => LinkColumn::class,
+                    'attribute' => 'username',
+                ],
+
+                'email:email',
+                //'created_at:datetime',
+                //'updated_at:datetime',
+                //'auth_key',
                 //'email_confirm_token:email',
                 //'password_hash',
                 //'password_reset_token',
-                //'email:email',
-                //'status',
-
-                ['class' => 'yii\grid\ActionColumn'],
+                [
+                    'class' => SetColumn::class,
+                    'filter' => User::getStatusesArray(),
+                    'attribute' => 'status',
+                    'name' => 'statusName',
+                    'cssCLasses' => [
+                        User::STATUS_ACTIVE  => 'success',
+                        User::STATUS_WAIT    => 'warning',
+                        User::STATUS_BLOCKED => 'default',
+                    ],
+                ],
+                ['class' => ActionColumns::class], // Настройка столбца действий через отдельный класс
             ],
         ]); ?>
 

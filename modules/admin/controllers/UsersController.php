@@ -10,7 +10,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * UserController implements the CRUD actions for User model.
+ * UserController реализует действия CRUD для модели User.
  */
 class UsersController extends Controller
 {
@@ -30,7 +30,7 @@ class UsersController extends Controller
     }
 
     /**
-     * Lists all User models.
+     * Перечисляет все модели пользователей.
      * @return mixed
      */
     public function actionIndex()
@@ -47,10 +47,10 @@ class UsersController extends Controller
     }
 
     /**
-     * Displays a single User model.
+     * Отображает одну модель пользователя.
      * @param integer $id
      * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
+     * @throws NotFoundHttpException если модель не может быть найдена
      */
     public function actionView($id)
     {
@@ -61,8 +61,8 @@ class UsersController extends Controller
     }
 
     /**
-     * Creates a new User model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
+     * Создает новую модель пользователя.
+     * Если создание прошло успешно, браузер будет перенаправлен на страницу просмотра.
      * @return mixed
      */
     public function actionCreate()
@@ -71,7 +71,7 @@ class UsersController extends Controller
 
         $model = new User();
         $model->scenario = User::SCENARIO_ADMIN_CREATE;
-        $model->status = User::STATUS_ACTIVE;
+        $model->status   = User::STATUS_ACTIVE;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -83,18 +83,18 @@ class UsersController extends Controller
     }
 
     /**
-     * Updates an existing User model.
-     * If update is successful, the browser will be redirected to the 'view' page.
+     * Обновляет существующую модель пользователя.
+     * Если обновление прошло успешно, браузер будет перенаправлен на страницу просмотра.
      * @param integer $id
      * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
+     * @throws NotFoundHttpException если модель не может быть найдена
      */
     public function actionUpdate($id)
     {
         $this->view->title = Yii::t('app', 'TITLE_USER_UPDATE');
 
-        $model = $this->findModel($id);
-        $model->scenario = User::SCENARIO_ADMIN_UPDATE;
+        $model = $this->findModel($id);                 // Получить пользователя по $id
+        $model->scenario = User::SCENARIO_ADMIN_UPDATE; // Запуск сценария
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -106,32 +106,32 @@ class UsersController extends Controller
     }
 
     /**
-     * Deletes an existing User model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
+     * Удаляет существующую модель пользователя.
+     * Если удаление прошло успешно, браузер будет перенаправлен на страницу индекса.
      * @param integer $id
      * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
+     * @throws NotFoundHttpException если модель не может быть найдена
      */
-    public function actionDelete($id)
+    public function actionDelete($id) // Удаление пользователя, по его id
     {
-        $this->findModel($id)->delete();
+        $this->findModel($id)->delete(); // Удалить пользователя
 
         return $this->redirect(['index']);
     }
 
     /**
-     * Finds the User model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
+     * Находит модель пользователя на основе значения ее первичного ключа.
+     * Если модель не найдена, будет выдано исключение 404 HTTP.
      * @param integer $id
-     * @return User the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
+     * @return User загруженная модель
+     * @throws NotFoundHttpException если модель не может быть найдена
      */
-    protected function findModel($id)
+    protected function findModel($id) // Получить модель пользователя по id
     {
         if (($model = User::findOne($id)) !== null) {
             return $model;
         }
 
-        throw new NotFoundHttpException(Yii::t('app', 'MESSAGE_PAGE_DOES_NOT_EXIT'));
+        throw new NotFoundHttpException(Yii::t('app', 'MESSAGE_PAGE_DOES_NOT_EXIT')); // Сообщение об ошибке
     }
 }

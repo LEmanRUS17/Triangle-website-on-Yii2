@@ -2,26 +2,34 @@
 
 namespace app\modules\admin\models;
 
+use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\modules\admin\models\User;
 
 /**
- * UserSearch represents the model behind the search form of `app\modules\users\models\User`.
+ * UserSearch представляет собой модель, лежащую в основе формы поиска «app \ modules \ users \ models \ User».
  */
-class UserSearch extends User
+class UserSearch extends Model
 {
+    public $id;        // ID
+    public $username;  // Имя пользователя
+    public $email;     // E-mail
+    public $status;    // Статус
+    public $date_from; // Дата создания
+    public $date_to;   // Дата изменения
+
     /**
      * {@inheritdoc}
      */
     public function rules() // Правила валидации
     {
         return [
-            [['id', 'created_at', 'updated_at', 'status'], 'integer'],
-            [['username', 'auth_key', 'email_confirm_token', 'password_hash', 'password_reset_token', 'email'], 'safe'],
+            [['id', 'status'], 'integer'],
+            [['username', 'email'], 'safe'],
+            [['date_from', 'date_to'], 'date', 'format' => 'php:Y-m-d'],
         ];
     }
-/*
+
     public function attributeLabels() // Значение атрибутов
     {
         return [
@@ -29,26 +37,19 @@ class UserSearch extends User
             'created_at'          => Yii::t('app', 'ATTRIBUTE_USER_CREATED_AT'),
             'updated_at'          => Yii::t('app', 'ATTRIBUTE_USER_UD_DATED_AT'),
             'username'            => Yii::t('app', 'ATTRIBUTE_USER_USERNAME'),
-            'auth_key'            => Yii::t('app', 'ATTRIBUTE_AUTH_KEY'),
-            'email_confirm_token' => Yii::t('app', 'ATTRIBUTE_EMAIL_CONFIRM_TOKEN'),
-            'password_hash'       => Yii::t('app', 'ATTRIBUTE_PASSWORD_HASH'),
-            'password_reset_token'=> Yii::t('app', 'ATTRIBUTE_PASSWORD_RESET_TOKEN'),
+            //'auth_key'            => Yii::t('app', 'ATTRIBUTE_AUTH_KEY'),
+            //'email_confirm_token' => Yii::t('app', 'ATTRIBUTE_EMAIL_CONFIRM_TOKEN'),
+            //'password_hash'       => Yii::t('app', 'ATTRIBUTE_PASSWORD_HASH'),
+            //'password_reset_token'=> Yii::t('app', 'ATTRIBUTE_PASSWORD_RESET_TOKEN'),
             'email'               => Yii::t('app', 'ATTRIBUTE_USER_EMAIL'),
             'status'              => Yii::t('app', 'ATTRIBUTE_USER_STATUS'),
+            'date_from'           => Yii::t('app', 'ATTRIBUTE_USER_DATE_FROM'),
+            'date_to'             => Yii::t('app', 'ATTRIBUTE_USER_DATE_TO'),
         ];
-    }
-*/
-    /**
-     * {@inheritdoc}
-     */
-    public function scenarios()
-    {
-        // bypass scenarios() implementation in the parent class
-        return Model::scenarios();
     }
 
     /**
-     * Creates data provider instance with search query applied
+     * Создает экземпляр поставщика данных с примененным поисковым запросом
      *
      * @param array $params
      *
@@ -58,34 +59,36 @@ class UserSearch extends User
     {
         $query = User::find();
 
-        // add conditions that should always apply here
+        // Добавьте здесь условия, которые всегда должны применяться
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort' => [ // Сортировка по убыванию id
+                'defaultOrder' => ['id' => SORT_DESC],
+            ],
         ]);
 
         $this->load($params);
 
         if (!$this->validate()) {
-            // uncomment the following line if you do not want to return any records when validation fails
-            // $query->where('0=1');
+            // Раскомментируйте следующую строку, если вы не хотите возвращать какие-либо записи в случае сбоя проверки
+            $query->where('0=1');
             return $dataProvider;
         }
 
-        // grid filtering conditions
+        // Условия фильтрации сетки
         $query->andFilterWhere([
             'id' => $this->id,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            //'created_at' => $this->created_at,
+            //'updated_at' => $this->updated_at,
             'status' => $this->status,
         ]);
 
-        $query->andFilterWhere(['like', 'username', $this->username])
-            ->andFilterWhere(['like', 'auth_key', $this->auth_key])
-            ->andFilterWhere(['like', 'email_confirm_token', $this->email_confirm_token])
-            ->andFilterWhere(['like', 'password_hash', $this->password_hash])
-            ->andFilterWhere(['like', 'password_reset_token', $this->password_reset_token])
-            ->andFilterWhere(['like', 'email', $this->email]);
+        $query
+            ->andFilterWhere(['like', 'username', $this->username])
+            ->andFilterWhere(['like', 'email', $this->email])
+            ->andFilterWhere(['>=', 'created_at', $this->date_from ? strtotime($this->date_from . ' 00:00:00') : null])
+            ->andFilterWhere(['<=', 'created_at', $this->date_to ? strtotime($this->date_to . ' 23:59:59') : null]);
 
         return $dataProvider;
     }

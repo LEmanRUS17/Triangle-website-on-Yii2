@@ -6,15 +6,15 @@ namespace app\modules\admin\models;
 use yii\helpers\ArrayHelper;
 use Yii;
 
-class User extends \app\modules\user\models\User
+class User extends \app\modules\user\models\User // Наследует от модели User модуля User
 {
-    const SCENARIO_ADMIN_CREATE = 'adminCreate';
-    const SCENARIO_ADMIN_UPDATE = 'adminUpdate';
+    const SCENARIO_ADMIN_CREATE = 'adminCreate'; // Сценарий Создание Админа
+    const SCENARIO_ADMIN_UPDATE = 'adminUpdate'; // Сценарий Изменений Админа
 
-    public $newPassword;
-    public $newPasswordRepeat;
+    public $newPassword;       // Новый пароли
+    public $newPasswordRepeat; // Новый пароль (повтор)
 
-    public function rules()
+    public function rules() // Правила валидации
     {
         return ArrayHelper::merge(parent::rules(), [
             [['newPassword', 'newPasswordRepeat'], 'required', 'on' => self::SCENARIO_ADMIN_CREATE],
@@ -23,7 +23,7 @@ class User extends \app\modules\user\models\User
         ]);
     }
 
-    public function scenarios()
+    public function scenarios() // Сценарии
     {
         $scenarios = parent::scenarios();
         $scenarios[self::SCENARIO_ADMIN_CREATE] = ['username', 'email', 'status', 'newPassword', 'newPasswordRepeat'];
@@ -31,15 +31,15 @@ class User extends \app\modules\user\models\User
         return $scenarios;
     }
 
-    public function attributeLabels()
+    public function attributeLabels() // Значение атрибутов
     {
         return ArrayHelper::merge(parent::attributeLabels(), [
-            'newPassword'       => Yii::t('app', 'USER_NEW_PASSWORD'),
-            'newPasswordRepeat' => Yii::t('app', 'USER_REPEAT_PASSWORD'),
+            'newPassword'       => Yii::t('app', 'ATTRIBUTE_USER_NEW_PASSWORD'),
+            'newPasswordRepeat' => Yii::t('app', 'ATTRIBUTE_USER_REPEAT_PASSWORD'),
         ]);
     }
 
-    public function beforeSave($insert)
+    public function beforeSave($insert) // Действие перед сохранением
     {
         if (parent::beforeSave($insert)) {
             if (!empty($this->newPassword)) {

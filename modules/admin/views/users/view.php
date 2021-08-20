@@ -30,15 +30,18 @@ use yii\widgets\DetailView;
             'model' => $model,
             'attributes' => [
                 'id',
-                'created_at',
-                'updated_at',
                 'username',
-                'auth_key',
-                'email_confirm_token:email',
-                'password_hash',
-                'password_reset_token',
-                'email:email',
-                'status',
+                'created_at:datetime',
+                'updated_at:datetime',
+                //'auth_key',
+                //'email_confirm_token:email',
+                //'password_hash',
+                //'password_reset_token',
+                //'email:email',
+                [
+                    'attribute' => 'status',
+                    'value' => $model->getStatusName(),
+                ],
             ],
         ]) ?>
 
