@@ -3,9 +3,10 @@
 
 namespace app\modules\user\controllers;
 
-use app\modules\user\models\ProfileUpdateForm;
-use app\modules\user\models\PasswordChangeForm;
+use app\modules\user\forms\ProfileUpdateForm;
+use app\modules\user\forms\PasswordChangeForm;
 use app\modules\user\models\User;
+use app\modules\user\Module;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use Yii;
@@ -29,7 +30,7 @@ class ProfileController extends Controller
 
     public function actionIndex() // Страница просмотра профиля
     {
-        $this->view->title = Yii::t('app', 'TITLE_PROFILE');
+        $this->view->title = Module::t('module', 'TITLE_PROFILE');
 
         $model = $this->findModel();
 
@@ -38,7 +39,7 @@ class ProfileController extends Controller
 
     public function actionUpdate() // Страница редактирования профиля
     {
-        $this->view->title = Yii::t('app', 'TITLE_PROFILE_UP');
+        $this->view->title = Module::t('module', 'TITLE_PROFILE_UP');
 
         $user  = $this->findModel();
         $model = new ProfileUpdateForm($user);
@@ -52,7 +53,7 @@ class ProfileController extends Controller
 
     public function actionPasswordChange() // Страница смены пароля
     {
-        $this->view->title = Yii::t('app', 'TITLE_PASSWORD_CHANGE');
+        $this->view->title = Module::t('module', 'TITLE_PASSWORD_CHANGE');
 
         $user = $this->findModel();
         $model = new PasswordChangeForm($user);

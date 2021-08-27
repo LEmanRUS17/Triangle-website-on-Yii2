@@ -2,6 +2,7 @@
 
 namespace app\modules\admin\controllers;
 
+use app\modules\admin\Module;
 use Yii;
 use app\modules\admin\models\User;
 use app\modules\admin\models\UserSearch;
@@ -35,7 +36,7 @@ class UsersController extends Controller
      */
     public function actionIndex()
     {
-        $this->view->title = Yii::t('app', 'TITLE_USER_PROFILES');
+        $this->view->title = Module::t('module', 'TITLE_USER_PROFILES');
 
         $searchModel = new UserSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
@@ -54,7 +55,7 @@ class UsersController extends Controller
      */
     public function actionView($id)
     {
-        $this->view->title = Yii::t('app', 'TITLE_USER_PROFILE');
+        $this->view->title = Module::t('module', 'TITLE_USER_PROFILE');
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -67,7 +68,7 @@ class UsersController extends Controller
      */
     public function actionCreate()
     {
-        $this->view->title = Yii::t('app', 'TITLE_USER_CREATE');
+        $this->view->title = Module::t('module', 'TITLE_USER_CREATE');
 
         $model = new User();
         $model->scenario = User::SCENARIO_ADMIN_CREATE;
@@ -91,7 +92,7 @@ class UsersController extends Controller
      */
     public function actionUpdate($id)
     {
-        $this->view->title = Yii::t('app', 'TITLE_USER_UPDATE');
+        $this->view->title = Module::t('module', 'TITLE_USER_UPDATE');
 
         $model = $this->findModel($id);                 // Получить пользователя по $id
         $model->scenario = User::SCENARIO_ADMIN_UPDATE; // Запуск сценария
@@ -132,6 +133,6 @@ class UsersController extends Controller
             return $model;
         }
 
-        throw new NotFoundHttpException(Yii::t('app', 'MESSAGE_PAGE_DOES_NOT_EXIT')); // Сообщение об ошибке
+        throw new NotFoundHttpException(Module::t('module', 'MESSAGE_PAGE_DOES_NOT_EXIT')); // Сообщение об ошибке
     }
 }

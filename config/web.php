@@ -6,7 +6,12 @@ $db     = require __DIR__ . '/db.php';
 $config = [
     'id'           => 'app',
     'basePath'     => dirname(__DIR__),
-    'bootstrap'    => ['log'],
+    'bootstrap' => [
+        'log',
+        'app\modules\admin\Bootstrap',
+        'app\modules\main\Bootstrap',
+        'app\modules\user\Bootstrap',
+    ],
     'defaultRoute' => 'home/index',     // Дефолтный маршрут при запуске сайта
     'language'     => 'ru-RU',          // Язык
     'name'         => 'Triangle',       // Название сайта
@@ -33,6 +38,14 @@ $config = [
                     'class' => 'yii\i18n\PhpMessageSource',
                     'forceTranslation' => true,
                 ],
+                'modules/user/*' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'forceTranslation' => true,
+                    'basePath' => '@app/modules/user/messages',
+                    'fileMap' => [
+                        'modules/user/module' => 'module.php',
+                    ],
+                ],
             ],
         ],
         'request' => [
@@ -56,7 +69,7 @@ $config = [
             // send all mails to a file by default. You have to set
             // 'useFileTransport' to false and configure a transport
             // for the mailer to send real emails.
-            'useFileTransport' => true,
+            'useFileTransport' => true, // Заглушка на осправку писем
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,

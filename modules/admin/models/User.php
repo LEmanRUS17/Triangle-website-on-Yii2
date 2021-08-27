@@ -3,6 +3,7 @@
 
 namespace app\modules\admin\models;
 
+use app\modules\admin\Module;
 use yii\helpers\ArrayHelper;
 use Yii;
 
@@ -34,8 +35,8 @@ class User extends \app\modules\user\models\User // Наследует от мо
     public function attributeLabels() // Значение атрибутов
     {
         return ArrayHelper::merge(parent::attributeLabels(), [
-            'newPassword'       => Yii::t('app', 'ATTRIBUTE_USER_NEW_PASSWORD'),
-            'newPasswordRepeat' => Yii::t('app', 'ATTRIBUTE_USER_REPEAT_PASSWORD'),
+            'newPassword'       => Module::t('module', 'ATTRIBUTE_USER_NEW_PASSWORD'),
+            'newPasswordRepeat' => Module::t('module', 'ATTRIBUTE_USER_REPEAT_PASSWORD'),
         ]);
     }
 

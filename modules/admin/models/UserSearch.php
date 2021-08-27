@@ -2,6 +2,7 @@
 
 namespace app\modules\admin\models;
 
+use app\modules\admin\Module;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
@@ -33,18 +34,18 @@ class UserSearch extends Model
     public function attributeLabels() // Значение атрибутов
     {
         return [
-            'id'                  => Yii::t('app', 'ATTRIBUTE_USER_ID'),
-            'created_at'          => Yii::t('app', 'ATTRIBUTE_USER_CREATED_AT'),
-            'updated_at'          => Yii::t('app', 'ATTRIBUTE_USER_UD_DATED_AT'),
-            'username'            => Yii::t('app', 'ATTRIBUTE_USER_USERNAME'),
-            //'auth_key'            => Yii::t('app', 'ATTRIBUTE_AUTH_KEY'),
-            //'email_confirm_token' => Yii::t('app', 'ATTRIBUTE_EMAIL_CONFIRM_TOKEN'),
-            //'password_hash'       => Yii::t('app', 'ATTRIBUTE_PASSWORD_HASH'),
-            //'password_reset_token'=> Yii::t('app', 'ATTRIBUTE_PASSWORD_RESET_TOKEN'),
-            'email'               => Yii::t('app', 'ATTRIBUTE_USER_EMAIL'),
-            'status'              => Yii::t('app', 'ATTRIBUTE_USER_STATUS'),
-            'date_from'           => Yii::t('app', 'ATTRIBUTE_USER_DATE_FROM'),
-            'date_to'             => Yii::t('app', 'ATTRIBUTE_USER_DATE_TO'),
+            'id'                  => Module::t('module', 'ATTRIBUTE_USER_ID'),
+            'created_at'          => Module::t('module', 'ATTRIBUTE_USER_CREATED_AT'),
+            'updated_at'          => Module::t('module', 'ATTRIBUTE_USER_UD_DATED_AT'),
+            'username'            => Module::t('module', 'ATTRIBUTE_USER_USERNAME'),
+            //'auth_key'            => Module::t('module', 'ATTRIBUTE_AUTH_KEY'),
+            //'email_confirm_token' => Module::t('module', 'ATTRIBUTE_EMAIL_CONFIRM_TOKEN'),
+            //'password_hash'       => Module::t('module', 'ATTRIBUTE_PASSWORD_HASH'),
+            //'password_reset_token'=> Module::t('module', 'ATTRIBUTE_PASSWORD_RESET_TOKEN'),
+            'email'               => Module::t('module', 'ATTRIBUTE_USER_EMAIL'),
+            'status'              => Module::t('module', 'ATTRIBUTE_USER_STATUS'),
+            'date_from'           => Module::t('module', 'ATTRIBUTE_USER_DATE_FROM'),
+            'date_to'             => Module::t('module', 'ATTRIBUTE_USER_DATE_TO'),
         ];
     }
 

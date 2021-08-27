@@ -7,6 +7,7 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\bootstrap\ActiveForm;
+use app\modules\user\Module;
 
 //$this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -32,7 +33,7 @@ use yii\bootstrap\ActiveForm;
                 <?= $form->field($model, 'rememberMe')->checkbox() ?>
 
                 <div style="color:#999;margin:1em 0">
-                    <a href="<?= Url::toRoute(['default/password-reset-request']) ?>"><?= Yii::t('app', 'LOGIN_RECOVERY_PASSWORD') ?></a>.
+                    <a href="<?= Url::toRoute(['default/password-reset-request']) ?>"><?= Module::t('module', 'LOGIN_RECOVERY_PASSWORD') ?></a>.
                    <!--
                     <br>
                     Требуется новое письмо с подтверждением? <a href="<?//= Url::toRoute(['default/email-confirm']) ?>">Отправить повторно</a>.
@@ -40,7 +41,7 @@ use yii\bootstrap\ActiveForm;
                 </div>
 
                 <div class="form-group">
-                    <?= Html::submitButton( Yii::t('app', 'LOGIN_BUTTON'), ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+                    <?= Html::submitButton( Module::t('module', 'LOGIN_BUTTON'), ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
                 </div>
 
                 <?php ActiveForm::end(); ?>

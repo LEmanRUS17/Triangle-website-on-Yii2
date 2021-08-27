@@ -1,5 +1,6 @@
 <?php
 
+use app\modules\admin\Module;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
@@ -16,8 +17,8 @@ use yii\widgets\DetailView;
         <h1 class="title"><?= Html::encode($this->title) ?>: <?= $model->username ?></h1>
 
         <p>
-            <?= Html::a(Yii::t('app', 'USERS_PROFILE_UPDATE'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-            <?= Html::a(Yii::t('app', 'USERS_PROFILE_DELETE'), ['delete', 'id' => $model->id], [
+            <?= Html::a(Module::t('module', 'USERS_PROFILE_UPDATE'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+            <?= Html::a(Module::t('module', 'USERS_PROFILE_DELETE'), ['delete', 'id' => $model->id], [
                 'class' => 'btn btn-danger',
                 'data' => [
                     'confirm' => Yii::t('app', 'Are you sure you want to delete this item?'),

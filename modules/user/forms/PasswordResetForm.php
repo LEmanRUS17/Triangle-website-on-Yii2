@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\user\models;
+namespace app\modules\user\forms;
 
 use yii\base\InvalidArgumentException;
 use yii\base\Model;
@@ -10,7 +10,7 @@ use app\modules\user\models\User;
 /**
  * Password reset form
  */
-class ResetPasswordForm extends Model
+class PasswordResetForm extends Model
 {
     public $password;
 
@@ -27,12 +27,12 @@ class ResetPasswordForm extends Model
      * @param array $config name-value pairs that will be used to initialize the object properties
      * @throws InvalidArgumentException if token is empty or not valid
      */
-    public function __construct($token, $config = [])
+    public function __construct($token, $timeout, $config = [])
     {
         if (empty($token) || !is_string($token)) {
             throw new InvalidArgumentException('Password reset token cannot be blank.');
         }
-        $this->_user = User::findByPasswordResetToken($token);
+        $this->_user = User::findByPasswordResetToken($token, $timeout);
         if (!$this->_user) {
             throw new InvalidArgumentException('Wrong password reset token.');
         }

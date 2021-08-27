@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use app\modules\user\Module;
 
 //$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'TITLE_PROFILE'), 'url' => ['index']];
 //$this->params['breadcrumbs'][] = $this->title;
@@ -18,7 +19,7 @@ use yii\widgets\ActiveForm;
             <?= $form->field($model, 'email')->input('email', ['maxlength' => true]) ?>
 
                 <div class="form-group">
-                    <?= Html::submitButton(Yii::t('app', 'UP_USER_BUTTON_SAVE'), ['class' => 'btn btn-primary']) ?>
+                    <?= Html::submitButton(Module::t('module', 'UP_USER_BUTTON_SAVE'), ['class' => 'btn btn-primary']) ?>
                 </div>
 
             <?php ActiveForm::end(); ?>

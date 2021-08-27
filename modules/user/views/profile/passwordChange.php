@@ -2,6 +2,7 @@
 
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
+use app\modules\user\Module;
 
 /* @var $this yii\web\View */
 /* @var $model app\modules\user\models\ChangePasswordForm */
@@ -23,7 +24,7 @@ use yii\helpers\Html;
             <?= $form->field($model, 'newPasswordRepeat')->passwordInput(['maxlength' => true]) ?>
 
             <div class="form-group">
-                <?= Html::submitButton(Yii::t('app', 'UP_USER_PASSWORD_BUTTON_SAVE'), ['class' => 'btn btn-primary']) ?>
+                <?= Html::submitButton(Module::t('module', 'UP_USER_PASSWORD_BUTTON_SAVE'), ['class' => 'btn btn-primary']) ?>
             </div>
 
             <?php ActiveForm::end(); ?>

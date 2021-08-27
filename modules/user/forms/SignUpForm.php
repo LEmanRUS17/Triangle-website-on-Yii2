@@ -1,8 +1,10 @@
 <?php
 
-namespace app\modules\user\models;
+namespace app\modules\user\forms;
 
 use yii\base\Model;
+use app\modules\user\models\User;
+use app\modules\user\Module;
 use Yii;
 
 class SignUpForm extends Model
@@ -18,13 +20,13 @@ class SignUpForm extends Model
             ['username', 'filter', 'filter' => 'trim'],                                                                       // Имя пользователя | Фильтр
             ['username', 'required'],                                                                                         // Имя пользователя | Обазательно
             ['username', 'match', 'pattern' => '#^[\w_-]+$#i'],                                                               // Имя пользователя |
-            ['username', 'unique', 'targetClass' => User::className(), 'message' => 'This username has already been taken.'], // Имя пользователя |
+            ['username', 'unique', 'targetClass' => User::class, 'message' => 'This username has already been taken.'], // Имя пользователя |
             ['username', 'string', 'min' => 2, 'max' => 255],                                                                 // Имя пользователя | Строка, минимальная длина 2, максимальная 255
 
             ['email', 'filter', 'filter' => 'trim'],                                                                            // Email | Фильтр
             ['email', 'required'],                                                                                              // Email | Обязательно
             ['email', 'email'],                                                                                                 // Email | Тип: email
-            ['email', 'unique', 'targetClass' => User::className(), 'message' => 'This email address has already been taken.'], // Email |
+            ['email', 'unique', 'targetClass' => User::class, 'message' => 'This email address has already been taken.'], // Email |
 
             ['password', 'required'],           // Пароль | Обязательн
             ['password', 'string', 'min' => 6], // Пароль | Строка, минимальная длина 6
@@ -36,10 +38,10 @@ class SignUpForm extends Model
     public function attributeLabels() // Значение атрибутов
     {
         return [
-            'username'   => 'Логин',
-            'password'   => 'Пароль',
-            'email'      => 'E-mails',
-            'verifyCode' => 'Введите текст с картинки'
+            'username'   => Module::t('module', 'SIGN_UP_USERNAME'),
+            'password'   => Module::t('module', 'SIGN_UP_PASSWORD'),
+            'email'      => Module::t('module', 'SIGN_UP_EMAIL'),
+            'verifyCode' => Module::t('module', 'SIGN_UP_VERIFY_CODE'),
         ];
     }
 

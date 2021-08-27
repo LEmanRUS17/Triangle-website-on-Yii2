@@ -2,6 +2,7 @@
 
 namespace app\modules\main;
 
+use Yii;
 /**
  * main module definition class
  */
@@ -13,12 +14,15 @@ class Module extends \yii\base\Module
     public $controllerNamespace = 'app\modules\main\controllers';
 
     /**
-     * {@inheritdoc}
+     * Вспомогательная функция для перевода
+     * @param $category      // Категория сообщения
+     * @param $message       // Сообщение которое нужно перевести
+     * @param array $params  // Список параметров
+     * @param null $language // Язык перевода
+     * @return string        // Переведенная строка
      */
-    public function init()
+    public static function t($category, $message, $params = [], $language = null)
     {
-        parent::init();
-
-        // custom initialization code goes here
+        return Yii::t('modules/admin/' . $category, $message, $params, $language);
     }
 }

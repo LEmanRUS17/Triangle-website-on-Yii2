@@ -1,7 +1,9 @@
 <?php
 
-namespace app\modules\user\models;
+namespace app\modules\user\forms;
 
+use app\modules\admin\Module;
+use app\modules\user\models\User;
 use yii\base\InvalidArgumentException;
 use Yii;
 
@@ -17,11 +19,11 @@ class EmailConfirm
     public function __construct($token, $config = []) // Создать модель формы по токену.
     {
         if (empty($token) || !is_string($token)) {
-        throw new InvalidArgumentException(Yii::t('app', 'ERROR_MISSING_CONFIRMATION_CODE'));
+        throw new InvalidArgumentException(Module::t('module', 'ERROR_MISSING_CONFIRMATION_CODE'));
         }
         $this->_user = User::findByEmailConfirmToken($token);
         if (!$this->_user) {
-        throw new InvalidArgumentException(Yii::t('app', 'ERROR_INVALID_TOKEN'));
+        throw new InvalidArgumentException(Module::t('module', 'ERROR_INVALID_TOKEN'));
         }
         parent::__construct($config);
     }

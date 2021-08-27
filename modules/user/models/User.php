@@ -2,6 +2,7 @@
 
 namespace app\modules\user\models;
 
+use app\modules\user\Module;
 use Yii;
 use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
@@ -47,15 +48,15 @@ class User extends ActiveRecord implements IdentityInterface
     public function rules() // Правила валидации
     {
         return [
-            ['username', 'required'],                                                                                                  // Имя пользователя | Обязательно
-            ['username', 'match', 'pattern' => '#^[\w_-]+$#is'],                                                                       // Имя пользователя |
-            ['username', 'unique', 'targetClass' => self::class, 'message' => Yii::t('app', 'MESSAGE_USER_USERNAME')], // Имя пользователя | Проверка на уникальность
-            ['username', 'string', 'min' => 2, 'max' => 255],                                                                          // Имя пользователя | Строка, минимальный размер 2, максимальный размер 255
+            ['username', 'required'],                                                                                        // Имя пользователя | Обязательно
+            ['username', 'match', 'pattern' => '#^[\w_-]+$#is'],                                                             // Имя пользователя |
+            ['username', 'unique', 'targetClass' => self::class, 'message' => Module::t('module', 'MESSAGE_USER_USERNAME')], // Имя пользователя | Проверка на уникальность
+            ['username', 'string', 'min' => 2, 'max' => 255],                                                                // Имя пользователя | Строка, минимальный размер 2, максимальный размер 255
 
-            ['email', 'required'],                                                                                               // Email | Обязателен
-            ['email', 'email'],                                                                                                  // Email | Тип поля: email
-            ['email', 'unique', 'targetClass' => self::class, 'message' => Yii::t('app', 'MESSAGE_USER_EMAIL')], // Email | Проверка на уникальность
-            ['email', 'string', 'max' => 255],                                                                                   // Email | Строка, максимальный размер 255
+            ['email', 'required'],                                                                                     // Email | Обязателен
+            ['email', 'email'],                                                                                        // Email | Тип поля: email
+            ['email', 'unique', 'targetClass' => self::class, 'message' => Module::t('module', 'MESSAGE_USER_EMAIL')], // Email | Проверка на уникальность
+            ['email', 'string', 'max' => 255],                                                                         // Email | Строка, максимальный размер 255
 
             ['status', 'integer'],                                             // Статус | Целое число
             ['status', 'default', 'value' => self::STATUS_ACTIVE],             // Статус | Значение по умолчанию: STATUS_ACTIVE
@@ -66,16 +67,16 @@ class User extends ActiveRecord implements IdentityInterface
     public function attributeLabels() // Значение атрибутов
     {
         return [
-            'id'                  => Yii::t('app', 'ATTRIBUTE_USER_ID'),
-            'created_at'          => Yii::t('app', 'ATTRIBUTE_USER_CREATED_AT'),
-            'updated_at'          => Yii::t('app', 'ATTRIBUTE_USER_UD_DATED_AT'),
-            'username'            => Yii::t('app', 'ATTRIBUTE_USER_USERNAME'),
-            'auth_key'            => Yii::t('app', 'ATTRIBUTE_AUTH_KEY'),
-            'email_confirm_token' => Yii::t('app', 'ATTRIBUTE_EMAIL_CONFIRM_TOKEN'),
-            'password_hash'       => Yii::t('app', 'ATTRIBUTE_PASSWORD_HASH'),
-            'password_reset_token'=> Yii::t('app', 'ATTRIBUTE_PASSWORD_RESET_TOKEN'),
-            'email'               => Yii::t('app', 'ATTRIBUTE_USER_EMAIL'),
-            'status'              => Yii::t('app', 'ATTRIBUTE_USER_STATUS'),
+            'id'                  => Module::t('module', 'ATTRIBUTE_USER_ID'),
+            'created_at'          => Module::t('module', 'ATTRIBUTE_USER_CREATED_AT'),
+            'updated_at'          => Module::t('module', 'ATTRIBUTE_USER_UD_DATED_AT'),
+            'username'            => Module::t('module', 'ATTRIBUTE_USER_USERNAME'),
+            'auth_key'            => Module::t('module', 'ATTRIBUTE_AUTH_KEY'),
+            'email_confirm_token' => Module::t('module', 'ATTRIBUTE_EMAIL_CONFIRM_TOKEN'),
+            'password_hash'       => Module::t('module', 'ATTRIBUTE_PASSWORD_HASH'),
+            'password_reset_token'=> Module::t('module', 'ATTRIBUTE_PASSWORD_RESET_TOKEN'),
+            'email'               => Module::t('module', 'ATTRIBUTE_USER_EMAIL'),
+            'status'              => Module::t('module', 'ATTRIBUTE_USER_STATUS'),
         ];
     }
 
@@ -87,9 +88,9 @@ class User extends ActiveRecord implements IdentityInterface
     public static function getStatusesArray() // Получить список статусов
     {
         return [
-            self::STATUS_BLOCKED => Yii::t('app', 'STATUS_BLOCKED'),
-            self::STATUS_ACTIVE  => Yii::t('app', 'STATUS_ACTIVE'),
-            self::STATUS_WAIT    => Yii::t('app', 'STATUS_WAIT'),
+            self::STATUS_BLOCKED => Module::t('module', 'STATUS_BLOCKED'),
+            self::STATUS_ACTIVE  => Module::t('module', 'STATUS_ACTIVE'),
+            self::STATUS_WAIT    => Module::t('module', 'STATUS_WAIT'),
         ];
     }
 
@@ -161,9 +162,9 @@ class User extends ActiveRecord implements IdentityInterface
     //--------------------------------------------------------------//
 
     // --- Смена пароля --- //
-    public static function findByPasswordResetToken($token) // Найти по токену сброса пароля
+    public static function findByPasswordResetToken($token, $timeout) // Найти по токену сброса пароля
     {
-        if (!static::isPasswordResetTokenValid($token)) {
+        if (!static::isPasswordResetTokenValid($token, $timeout)) {
             return null;
         }
         return static::findOne([
@@ -172,15 +173,14 @@ class User extends ActiveRecord implements IdentityInterface
         ]);
     }
 
-    public static function isPasswordResetTokenValid($token) // Действителен ли токен сброса пароля
+    public static function isPasswordResetTokenValid($token, $timeout) // Действителен ли токен сброса пароля
     {
         if (empty($token)) { // Если токен существует
             return false;
         }
-        $expire = Yii::$app->params['user.passwordResetTokenExpire'];
         $parts = explode('_', $token);
         $timestamp = (int) end($parts);
-        return $timestamp + $expire >= time();
+        return $timestamp + $timeout >= time();
     }
 
     public function generatePasswordResetToken() // Генерация токена для востановления пароля

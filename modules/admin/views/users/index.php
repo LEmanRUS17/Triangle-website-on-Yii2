@@ -9,6 +9,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 use app\modules\admin\components\grid\ActionColumns;
+use app\modules\admin\Module;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\modules\admin\models\UserSearch */
@@ -22,7 +23,7 @@ use app\modules\admin\components\grid\ActionColumns;
         <h1 class="title"><?= Html::encode($this->title) ?></h1>
 
         <p>
-            <?= Html::a(Yii::t('app', 'USERS_PROFILE_CREATE_BUTTON'), ['create'], ['class' => 'btn btn-success']) ?>
+            <?= Html::a(Module::t('module', 'USERS_PROFILE_CREATE_BUTTON'), ['create'], ['class' => 'btn btn-success']) ?>
         </p>
 
         <?php Pjax::begin(); ?>

@@ -1,7 +1,9 @@
 <?php
 
-namespace app\modules\user\models;
+namespace app\modules\user\forms;
 
+use app\modules\user\Module;
+use app\modules\user\models\User;
 use yii\base\Model;
 use yii\db\ActiveQuery;
 use Yii;
@@ -31,7 +33,7 @@ class ProfileUpdateForm extends Model
                 'email',
                 'unique',
                 'targetClass' => User::class,
-                'message' => Yii::t('app', 'ERROR_EMAIL_EXISTS'),
+                'message' => Module::t('module', 'ERROR_EMAIL_EXISTS'),
                 'filter' => ['<>', 'id', $this->_user->id],
             ],
             ['email', 'string', 'max' => 255], // Email | Строка, максимальная длина 255
@@ -41,7 +43,7 @@ class ProfileUpdateForm extends Model
     public function attributeLabels() // Значение атрибутов
     {
         return [
-            'email' => Yii::t('app', 'UP_USER_EMAIL'),
+            'email' => Module::t('module', 'UP_USER_EMAIL'),
         ];
     }
 

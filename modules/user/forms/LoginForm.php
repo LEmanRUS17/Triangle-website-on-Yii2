@@ -1,8 +1,9 @@
 <?php
 
-namespace app\modules\user\models;
+namespace app\modules\user\forms;
 
 use app\modules\user\models\User;
+use app\modules\user\Module;
 use Yii;
 use yii\base\Model;
 
@@ -35,9 +36,9 @@ class LoginForm extends Model
     public function attributeLabels() // Значение атрибутов
     {
         return [
-            'username'   => Yii::t('app', 'LOGIN_USERNAME'),
-            'password'   => Yii::t('app', 'LOGIN_PASSWORD'),
-            'rememberMe' => Yii::t('app', 'LOGIN_REMEMBER_ME'),
+            'username'   => Module::t('module', 'LOGIN_USERNAME'),
+            'password'   => Module::t('module', 'LOGIN_PASSWORD'),
+            'rememberMe' => Module::t('module', 'LOGIN_REMEMBER_ME'),
         ];
     }
 
@@ -47,11 +48,11 @@ class LoginForm extends Model
             $user = $this->getUser();
 
             if (!$user || !$user->validatePassword($this->password)) {
-                $this->addError('password', Yii::t('app', 'MESSAGE_LOGIN_PASSWORD'));
+                $this->addError('password', Module::t('module', 'MESSAGE_LOGIN_PASSWORD'));
             } elseif ($user && $user->status == User::STATUS_BLOCKED) {
-                $this->addError('username', Yii::t('app', 'MESSAGE_LOGIN_USERNAME_BLOCKED'));
+                $this->addError('username', Module::t('module', 'MESSAGE_LOGIN_USERNAME_BLOCKED'));
             } elseif ($user && $user->status == User::STATUS_WAIT) {
-                $this->addError('username', Yii::t('app', 'MESSAGE_LOGIN_USERNAME_WAIT'));
+                $this->addError('username', Module::t('module', 'MESSAGE_LOGIN_USERNAME_WAIT'));
             }
         }
     }
