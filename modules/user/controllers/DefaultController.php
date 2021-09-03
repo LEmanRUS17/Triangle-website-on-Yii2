@@ -8,12 +8,13 @@ use app\modules\user\forms\PasswordResetRequestForm;
 use app\modules\user\forms\PasswordResetForm;
 use app\modules\user\forms\SignUpForm;
 use app\modules\user\Module;
+use Yii;
 use yii\base\InvalidArgumentException;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
-use Yii;
+
 
 class DefaultController extends Controller
 {
@@ -68,6 +69,7 @@ class DefaultController extends Controller
     public function actionLogin() // Вход в акаунт
     {
         $this->view->title = Module::t('module', 'TITLE_LOGIN');
+
         if (!Yii::$app->user->isGuest) { // Если выполнен вход
             return $this->goHome(); // Вернуть на главную
         }
@@ -91,7 +93,9 @@ class DefaultController extends Controller
     {
         $this->view->title = Module::t('module', 'TITLE_SIGN_UP');
 
-        $model = new SignUpForm(); // Обект модели SignUpForm
+        /** @var SignupForm $model */
+        //$model = new SignUpForm(); // Обект модели SignUpForm
+        $model = Yii::createObject(SignupForm::class);
         if ($model->load(Yii::$app->request->post())) {
             if ($user = $model->signUp()) {
                 Yii::$app->getSession()->setFlash('success', Module::t('module', 'SUCCESS_EMAIL_ADDRESS_CONFIRM'));
@@ -105,7 +109,7 @@ class DefaultController extends Controller
     public function actionEmailConfirm($token) // Подтверждение электронной почты
     {
         try {
-            $model = new PasswordResetForm($token, $this->module->passwordResetTokenExpire);
+            $model = new EmailConfirm($token);
         } catch (InvalidArgumentException  $e) {
             throw new BadRequestHttpException($e->getMessage());
         }
@@ -123,8 +127,9 @@ class DefaultController extends Controller
     {
         $this->view->title = Module::t('module', 'TITLE_PASSWORD_RESET_REQUEST');
 
-        $model = new PasswordResetRequestForm($this->module->passwordResetTokenExpire);
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+        /** @var PasswordResetRequestForm $model */
+        $model = Yii::createObject(PasswordResetRequestForm::class);
+        if ($model->load(Yii::$app->request->post()) && $model->validate($model->email)) {
             if ($model->sendEmail()) {
                 Yii::$app->getSession()->setFlash('success', Module::t('module', 'SUCCESS_EMAIL_RESET_PASSWORD'));
 
@@ -140,9 +145,11 @@ class DefaultController extends Controller
     public function actionPasswordReset($token) // Сброс пароля
     {
         try {
-            $model = new PasswordResetForm($token);
+            /** @var PasswordResetForm $model */
+            $model = Yii::createObject(PasswordResetForm::class, [$token]);
         } catch (InvalidArgumentException $e) {
             throw new BadRequestHttpException($e->getMessage());
+
         }
 
         if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->resetPassword()) {

@@ -20,14 +20,16 @@ return [
     'STATUS_WAIT'    => 'Ожидает подтверждения',
 
     // Сообщения об ошибках:
-    'ERROR_EMAIL_EXISTS'              => 'Пользователь с таким Email уже существует',      // Редактирование Email, модель формы ProfileUpdateForm
-    'ERROR_WRONG_CURRENT_PASSWORD'    => 'Текущий пароль введен не верно',                 // Проверка действующего пароля модели PasswordChangeForm модуля User
-    'ERROR_MISSING_CONFIRMATION_CODE' => 'Отсутствует код подтверждения.',                 // Подтвеждение по электронной почте (EmailConfirm)
-    'ERROR_INVALID_TOKEN'             => 'Неверный токен.',                                // Подтвеждение по электронной почте (EmailConfirm)
-    'ERROR_EMAIL_CONFIRMATION'        => 'Ошибка подтверждения Email.',                    // Подтвеждение Email, модель EmailConfirm
-    'ERROR_PROBLEM_SHIPPING'          => 'Извините. У нас возникли проблемы с отправкой.', // Подтвеждение Email, модель EmailConfirm
-    'ERROR_TOKEN_IS_SENT'             => 'Error token',                                    // Ошибка токена модели формы PasswordResetRequestForm
-
+    'ERROR_EMAIL_EXISTS'               => 'Пользователь с таким Email уже существует',      // Редактирование Email, модель формы ProfileUpdateForm
+    'ERROR_WRONG_CURRENT_PASSWORD'     => 'Текущий пароль введен не верно',                 // Проверка действующего пароля модели PasswordChangeForm модуля User
+    'ERROR_MISSING_CONFIRMATION_CODE'  => 'Отсутствует код подтверждения.',                 // Подтвеждение по электронной почте (EmailConfirm)
+    'ERROR_INVALID_TOKEN'              => 'Неверный токен.',                                // Подтвеждение по электронной почте (EmailConfirm)
+    'ERROR_EMAIL_CONFIRMATION'         => 'Ошибка подтверждения Email.',                    // Подтвеждение Email, модель EmailConfirm
+    'ERROR_PROBLEM_SHIPPING'           => 'Извините. У нас возникли проблемы с отправкой.', // Подтвеждение Email, модель EmailConfirm
+    'ERROR_TOKEN_IS_SENT'              => 'Error token',                                    // Ошибка токена модели формы PasswordResetRequestForm
+    'ERROR_USER_NOT_FOUND_BY_EMAIL'    => 'Not found by email',
+    'ERROR_RASSWORD_RESET_TOKEN_EMPTY' => 'Маркер сброса пароля не может быть пустым.',
+    'ERROR_RASSWORD_RESET_TOKEN_WRONG' => 'Неверный токен сброса пароля',
 
     // Заголовки:
     'TITLE_LOGIN'                  => 'Вход',
@@ -78,4 +80,9 @@ return [
     // Письмо востановления пароля:
     'PASSWORD_RESET_GREETINGS'   => 'Здравствуйте',
     'PASSWORD_RESET_CHANGE_LINK' => 'Пройдите по ссылке, чтобы сменить пароль',
+
+    // Сообщения:
+    'MESSAGE_LOGIN_PASSWORD'         => 'Неверное имя пользователя или пароль.',    // Сообщение валидации модели LoginForm модуля User
+    'MESSAGE_LOGIN_USERNAME_BLOCKED' => 'Ваш аккаунт заблокирован.',                // Сообщение валидации модели LoginForm модуля User
+    'MESSAGE_LOGIN_USERNAME_WAIT'    => 'Ваш аккаунт не подтвежден.',
 ];

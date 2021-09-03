@@ -18,9 +18,7 @@ return [
     // Сообщения:
     'MESSAGE_USER_USERNAME'          => 'Это имя пользователя уже занято.',         // Правило валидации модели User модуля User
     'MESSAGE_USER_EMAIL'             => 'Этот адрес электронной почты уже занят .', // Правило валидации модели User модуля User
-    'MESSAGE_LOGIN_PASSWORD'         => 'Неверное имя пользователя или пароль.',    // Сообщение валидации модели LoginForm модуля User
-    'MESSAGE_LOGIN_USERNAME_BLOCKED' => 'Ваш аккаунт заблокирован.',                // Сообщение валидации модели LoginForm модуля User
-    'MESSAGE_LOGIN_USERNAME_WAIT'    => 'Ваш аккаунт не подтвежден.',               // Сообщение валидации модели LoginForm модуля User
+             // Сообщение валидации модели LoginForm модуля User
 
     // Сообщения об успехе:
     'SUCCESS_EMAIL_ADDRESS_CONFIRM'       => 'Подтвердите ваш электронный адрес.',                                                // Подтвеждение Email, модель EmailConfirm

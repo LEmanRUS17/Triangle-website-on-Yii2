@@ -58,6 +58,14 @@ class ContactForm extends Model
                 ->setTextBody($this->body)
                 ->send();
 
+//            Yii::$app->mailer->compose()
+//                ->setFrom('lemanrus17@gmail.com')
+//                ->setTo('lemanrus17@gmail.com')
+//                ->setSubject('Тема сообщения')
+//                ->setTextBody('Текст сообщения')
+//                ->setHtmlBody('<b>текст сообщения в формате HTML</b>')
+//                ->send();
+
             return true;
         }
         return false;

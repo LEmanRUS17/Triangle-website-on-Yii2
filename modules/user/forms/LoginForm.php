@@ -8,9 +8,9 @@ use Yii;
 use yii\base\Model;
 
 /**
- * LoginForm is the model behind the login form.
+ * Форма входа в акаунт
  *
- * @property-read User|null $user This property is read-only.
+ * @property-read User|null $user Это свойство доступно только для чтения.
  *
  */
 class LoginForm extends Model
@@ -44,15 +44,15 @@ class LoginForm extends Model
 
     public function validatePassword() // Валидация пароля
     {
-        if (!$this->hasErrors()) {
-            $user = $this->getUser();
+        if (!$this->hasErrors()) { // Если ошибок не вазникло
+            $user = $this->getUser(); // Получить пользователя
 
-            if (!$user || !$user->validatePassword($this->password)) {
-                $this->addError('password', Module::t('module', 'MESSAGE_LOGIN_PASSWORD'));
-            } elseif ($user && $user->status == User::STATUS_BLOCKED) {
-                $this->addError('username', Module::t('module', 'MESSAGE_LOGIN_USERNAME_BLOCKED'));
-            } elseif ($user && $user->status == User::STATUS_WAIT) {
-                $this->addError('username', Module::t('module', 'MESSAGE_LOGIN_USERNAME_WAIT'));
+            if (!$user || !$user->validatePassword($this->password)) { // Если пользователь (не существует || пароль не прошол валидацию
+                $this->addError('password', Module::t('module', 'MESSAGE_LOGIN_PASSWORD')); // Вывести сообщение
+            } elseif ($user && $user->status == User::STATUS_BLOCKED) { // Если пользоветель (существует && пользователь заблокирован)
+                $this->addError('username', Module::t('module', 'MESSAGE_LOGIN_USERNAME_BLOCKED')); // Вывести сообщение
+            } elseif ($user && $user->status == User::STATUS_WAIT) { // Если пользоветель (существует && пользователь не подтвержден)
+                $this->addError('username', Module::t('module', 'MESSAGE_LOGIN_USERNAME_WAIT')); // Вывести сообщение
             }
         }
     }
@@ -62,7 +62,7 @@ class LoginForm extends Model
      */
     public function login() // Выполняет вход пользователя
     {
-        if ($this->validate()) {
+        if ($this->validate()) { // Если валидация прошла успешно
             return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600*24*30 : 0);
         }
         return false;
@@ -73,8 +73,8 @@ class LoginForm extends Model
      */
     public function getUser() // Получить пользователя
     {
-        if ($this->_user === false) {
-            $this->_user = User::findByUsername($this->username);
+        if ($this->_user === false) { // Если переменная _user пустая
+            $this->_user = User::findByUsername($this->username); // Получить пользователя по username
         }
 
         return $this->_user;

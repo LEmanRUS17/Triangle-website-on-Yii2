@@ -1,8 +1,8 @@
 <?php
 
 return [
-    'adminEmail'   => 'studio-bogard@mail.ru',
-    'supportEmail' => 'studio-bogard@mail.ru', // Почта исходящих писем
+    'adminEmail'   => 'lemanrus17@gmail.com',
+    'supportEmail' => 'lemanrus17@gmail.com', // Почта исходящих писем
 
     //'senderEmail' => 'noreply@example.com',
     //'senderName' => 'Example.com mailer',

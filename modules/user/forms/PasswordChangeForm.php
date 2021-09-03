@@ -4,9 +4,7 @@ namespace app\modules\user\forms;
 
 use app\modules\user\models\User;
 use app\modules\user\Module;
-use Yii;
 use yii\base\Model;
-
 
 /**
  * Форма смены пароля
@@ -57,9 +55,9 @@ class PasswordChangeForm extends Model
      */
     public function currentPassword($attribute, $params) // Проверка действующего пароля
     {
-        if (!$this->hasErrors()) {
-            if (!$this->_user->validatePassword($this->$attribute)) {
-                $this->addError($attribute, Module::t('module', 'ERROR_WRONG_CURRENT_PASSWORD'));
+        if (!$this->hasErrors()) { // Если ошибок не возникло
+            if (!$this->_user->validatePassword($this->$attribute)) { // Если пароль веден неверно
+                $this->addError($attribute, Module::t('module', 'ERROR_WRONG_CURRENT_PASSWORD')); // Вывести сообщение
             }
         }
     }
@@ -69,10 +67,10 @@ class PasswordChangeForm extends Model
      */
     public function changePassword() // Изменение пароля
     {
-        if ($this->validate()) {
+        if ($this->validate()) { // Если валидация прошла успешно
             $user = $this->_user;
-            $user->setPassword($this->newPassword);
-            return $user->save();
+            $user->setPassword($this->newPassword); // Получить пароль
+            return $user->save();                   // Сохранить пользователя
         } else {
             return false;
         }

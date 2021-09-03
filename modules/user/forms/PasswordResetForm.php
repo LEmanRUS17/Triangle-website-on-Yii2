@@ -3,50 +3,60 @@
 namespace app\modules\user\forms;
 
 use yii\base\InvalidArgumentException;
+use app\modules\user\Module;
 use yii\base\Model;
-use Yii;
 use app\modules\user\models\User;
 
 /**
- * Password reset form
+ * Форма сброса пароля
  */
 class PasswordResetForm extends Model
 {
-    public $password;
+    public $password; // Пароль
 
     /**
      * @var \common\models\User
      */
     private $_user;
 
-
     /**
-     * Creates a form model given a token.
+     * Создает модель формы по токену .
      *
      * @param string $token
-     * @param array $config name-value pairs that will be used to initialize the object properties
-     * @throws InvalidArgumentException if token is empty or not valid
+     * @param integer $timeout
+     * @param array $config Пары имя-значение, которые будут использоваться для инициализации свойств объекта
+     * @throws \yii\base\InvalidArgumentException Если токен пуст или недействителен
      */
     public function __construct($token, $timeout, $config = [])
     {
-        if (empty($token) || !is_string($token)) {
-            throw new InvalidArgumentException('Password reset token cannot be blank.');
+        if (empty($token) || !is_string($token)) { // Если (токен получен || толкен не строка)
+            throw new InvalidArgumentException(Module::t('module', 'ERROR_RASSWORD_RESET_TOKEN_EMPTY')); // Вывод сообщения
         }
-        $this->_user = User::findByPasswordResetToken($token, $timeout);
-        if (!$this->_user) {
-            throw new InvalidArgumentException('Wrong password reset token.');
+        $this->_user = User::findByPasswordResetToken($token, $timeout); // Найти пользователя по токены сброса пароля
+        if (!$this->_user) { // Если пользователь найден
+            throw new InvalidArgumentException(Module::t('module', 'ERROR_RASSWORD_RESET_TOKEN_EMPTY')); // Вывод сообщения
         }
         parent::__construct($config);
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
-    public function rules()
+    public function rules() // Правила валидации
     {
         return [
             ['password', 'required'],
-            ['password', 'string', 'min' => Yii::$app->params['user.passwordMinLength']],
+            ['password', 'string', 'min' => 6],
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'password' => Module::t('module', 'USER_NEW_PASSWORD'),
         ];
     }
 

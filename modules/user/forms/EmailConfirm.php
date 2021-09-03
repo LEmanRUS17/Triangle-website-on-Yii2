@@ -5,11 +5,10 @@ namespace app\modules\user\forms;
 use app\modules\admin\Module;
 use app\modules\user\models\User;
 use yii\base\InvalidArgumentException;
-use Yii;
 
-class EmailConfirm
+class EmailConfirm // Подтверждение электронной почты
 {
-    private $_user;
+    private $_user; // Переменная для хранения пользователя
 
     /**
     * @param  string $token
@@ -18,14 +17,14 @@ class EmailConfirm
     */
     public function __construct($token, $config = []) // Создать модель формы по токену.
     {
-        if (empty($token) || !is_string($token)) {
-        throw new InvalidArgumentException(Module::t('module', 'ERROR_MISSING_CONFIRMATION_CODE'));
+        if (empty($token) || !is_string($token)) { // Если переменная (пуста || не евляется сторокой)
+            throw new InvalidArgumentException(Module::t('module', 'ERROR_MISSING_CONFIRMATION_CODE')); // Сообщение об ошибке
         }
-        $this->_user = User::findByEmailConfirmToken($token);
-        if (!$this->_user) {
-        throw new InvalidArgumentException(Module::t('module', 'ERROR_INVALID_TOKEN'));
+        $this->_user = User::findByEmailConfirmToken($token); // Получение почты по токену
+        if (!$this->_user) { // Если переменная не существует
+            throw new InvalidArgumentException(Module::t('module', 'ERROR_INVALID_TOKEN')); // Сообщение об ошибке
         }
-        parent::__construct($config);
+        //parent::__construct($config);
     }
 
     /**
@@ -34,9 +33,9 @@ class EmailConfirm
     public function confirmEmail() // Подтвердить Email
     {
         $user = $this->_user;
-        $user->status = User::STATUS_ACTIVE;
-        $user->removeEmailConfirmToken();
+        $user->status = User::STATUS_ACTIVE; // Активировать пользователя
+        $user->removeEmailConfirmToken();    // Удалить токен
 
-        return $user->save();
+        return $user->save(); // Сохранить пользователя
     }
 }

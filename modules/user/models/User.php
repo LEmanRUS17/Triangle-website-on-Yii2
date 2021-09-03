@@ -2,6 +2,7 @@
 
 namespace app\modules\user\models;
 
+use app\modules\user\models\query\UserQuery;
 use app\modules\user\Module;
 use Yii;
 use yii\base\NotSupportedException;
@@ -33,7 +34,7 @@ class User extends ActiveRecord implements IdentityInterface
 
     public static function tableName() // Указание названия таблицы к которорой привязана модель
     {
-        return 'user';
+        return '{{%user}}';
     }
 
     //!
@@ -45,6 +46,9 @@ class User extends ActiveRecord implements IdentityInterface
     }
     //!
 
+    /**
+     * @inheritdoc
+     */
     public function rules() // Правила валидации
     {
         return [
@@ -64,6 +68,9 @@ class User extends ActiveRecord implements IdentityInterface
         ];
     }
 
+    /**
+     * @inheritdoc
+     */
     public function attributeLabels() // Значение атрибутов
     {
         return [
@@ -195,7 +202,7 @@ class User extends ActiveRecord implements IdentityInterface
     //--------------------//
 
     // --- Подтверждение адреса электронной почты --- //
-    public static function findByEmailConfirmToken($email_confirm_token) // Найти по электронной почте подтвердить токен
+    public static function findByEmailConfirmToken($email_confirm_token) // Найти по электронной почте, подтвердить токен
     {
         return static::findOne(['email_confirm_token' => $email_confirm_token, 'status' => self::STATUS_WAIT]);
     }
@@ -210,5 +217,13 @@ class User extends ActiveRecord implements IdentityInterface
         $this->email_confirm_token = null;
     }
     // -----------------------------------------------//
+
+    /**
+     * @return UserQuery
+     */
+    public static function find()
+    {
+        return Yii::createObject(UserQuery::class, [get_called_class()]);
+    }
 }
 

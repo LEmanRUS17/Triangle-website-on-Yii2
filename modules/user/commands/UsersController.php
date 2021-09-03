@@ -7,9 +7,12 @@ use yii\console\Controller;
 use yii\console\Exception;
 use yii\helpers\Console;
 
+/**
+ * Действия на вкладке users в консоли
+ */
 class UsersController extends Controller
 {
-    public function actionIndex()
+    public function actionIndex() // Список команд
     {
         echo 'yii users/create' . PHP_EOL;
         echo 'yii users/remove' . PHP_EOL;
@@ -17,46 +20,46 @@ class UsersController extends Controller
         echo 'yii users/change-password' . PHP_EOL;
     }
 
-    public function actionCreate()
+    public function actionCreate() // Создание
     {
-        $model = new User();
-        $this->readValue($model, 'username');
-        $this->readValue($model, 'email');
-        $model->setPassword($this->prompt('Password:', [
-        'required' => true,
-        'pattern' => '#^.{6,255}$#i',
-        'error' => 'More than 6 symbols',
+        $model = new User();                                  // Новая модель пользователя
+        $this->readValue($model, 'username');         // Получить 'username' из консоли
+        $this->readValue($model, 'email');            // Получить 'email' из консоли
+        $model->setPassword($this->prompt('Password:', [ // Получить 'password' из консоли (Генерация хэш пароля)
+            'required' => true,               // Обязательный
+            'pattern' => '#^.{6,255}$#i',     // Шаблон пароля
+            'error' => 'More than 6 symbols', // Сообщение об ошибке
         ]));
-        $model->generateAuthKey();
-        $this->log($model->save());
+        $model->generateAuthKey();  // Генерация дополнительного ключа
+        $this->log($model->save()); // Выполнить: сохранение пользователя
     }
 
-    public function actionRemove()
+    public function actionRemove() // Удаление
     {
-        $username = $this->prompt('Username:', ['required' => true]);
-        $model = $this->findModel($username);
-        $this->log($model->delete());
+        $username = $this->prompt('Username:', ['required' => true]); // Получить 'username' из консоли, Обязательный
+        $model = $this->findModel($username);                              // Найти пользователя по username
+        $this->log($model->delete());                                      // Выполнить: удалить пользователя
     }
 
-    public function actionActivate()
+    public function actionActivate() // Активировать пользователя
     {
-        $username = $this->prompt('Username:', ['required' => true]);
-        $model = $this->findModel($username);
-        $model->status = User::STATUS_ACTIVE;
-        $model->removeEmailConfirmToken();
-        $this->log($model->save());
+        $username = $this->prompt('Username:', ['required' => true]); // Получить 'username' из консоли, Обязательный
+        $model = $this->findModel($username);                             // Найти пользователя по username
+        $model->status = User::STATUS_ACTIVE;                             // Изменить статус на АКТИВНЫЙ
+        $model->removeEmailConfirmToken();                                // Удалить токен подтверждения электронной почты
+        $this->log($model->save());                                       // Выполнить: сохранение пользователя
     }
 
-    public function actionChangePassword()
+    public function actionChangePassword() // Изменить пароль пользователя
     {
-        $username = $this->prompt('Username:', ['required' => true]);
-        $model = $this->findModel($username);
-        $model->setPassword($this->prompt('New password:', [
-        'required' => true,
-        'pattern' => '#^.{6,255}$#i',
-        'error' => 'More than 6 symbols',
+        $username = $this->prompt('Username:', ['required' => true]); // Получить 'username' из консоли, Обязательный
+        $model = $this->findModel($username);                              // Найти пользователя по username
+        $model->setPassword($this->prompt('New password:', [          // Получить 'password' из консоли (Генерация хэш пароля)
+            'required' => true,               // Обязательный
+            'pattern' => '#^.{6,255}$#i',     // Шаблон пароля
+            'error' => 'More than 6 symbols', // Сообщение об ошибке
         ]));
-        $this->log($model->save());
+        $this->log($model->save()); // Выполнить: сохранение пользователя
     }
 
     /**
@@ -64,10 +67,10 @@ class UsersController extends Controller
     * @throws \yii\console\Exception
     * @return User the loaded model
     */
-    private function findModel($username)
+    private function findModel($username) // Найти модель
     {
-        if (!$model = User::findOne(['username' => $username])) {
-            throw new Exception('User not found');
+        if (!$model = User::findOne(['username' => $username])) { // Если модель пользователя не найдена
+            throw new Exception('User not found'); // Вывести исключение
         }
         return $model;
     }
