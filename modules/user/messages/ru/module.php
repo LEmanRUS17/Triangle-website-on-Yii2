@@ -82,7 +82,11 @@ return [
     'PASSWORD_RESET_CHANGE_LINK' => 'Пройдите по ссылке, чтобы сменить пароль',
 
     // Сообщения:
-    'MESSAGE_LOGIN_PASSWORD'         => 'Неверное имя пользователя или пароль.',    // Сообщение валидации модели LoginForm модуля User
-    'MESSAGE_LOGIN_USERNAME_BLOCKED' => 'Ваш аккаунт заблокирован.',                // Сообщение валидации модели LoginForm модуля User
-    'MESSAGE_LOGIN_USERNAME_WAIT'    => 'Ваш аккаунт не подтвежден.',
+    'MESSAGE_LOGIN_PASSWORD'                 => 'Неверное имя пользователя или пароль.',    // Сообщение валидации модели LoginForm модуля User
+    'MESSAGE_LOGIN_USERNAME_BLOCKED'         => 'Ваш аккаунт заблокирован.',                // Сообщение валидации модели LoginForm модуля User
+    'MESSAGE_LOGIN_USERNAME_WAIT'            => 'Ваш аккаунт не подтвежден.',               // Сообщение валидации модели LoginForm модуля User
+    'MESSAGE_USER_USERNAME'                  => 'Это имя пользователя уже занято.',         // Правило валидации модели User модуля User
+    'MESSAGE_USER_EMAIL'                     => 'Этот адрес электронной почты уже занят.',  // Правило валидации модели User модуля User
+    'MESSAGE_SIGN_UP_USERNAME_ALREADY_TAKEN' => 'Это имя пользователя уже занято.',         // Сообщение валидации модели SignUpForm модуля User
+    'MESSAGE_SIGN_UP_EMAIL_ALREADY_TAKEN'    => 'Этот адрес электронной почты уже занят. ', // Сообщение валидации модели SignUpForm модуля User
 ];

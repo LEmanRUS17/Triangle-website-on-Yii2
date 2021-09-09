@@ -5,8 +5,6 @@ namespace app\modules\user\forms;
 use app\modules\user\Module;
 use app\modules\user\models\User;
 use yii\base\Model;
-use yii\db\ActiveQuery;
-use Yii;
 
 class ProfileUpdateForm extends Model
 {
@@ -29,8 +27,7 @@ class ProfileUpdateForm extends Model
         return [
             ['email', 'required'], // Email | Обязательный
             ['email', 'email'],    // Email | Соответствует "email"
-            [
-                'email',
+            ['email',
                 'unique',
                 'targetClass' => User::class,
                 'message' => Module::t('module', 'ERROR_EMAIL_EXISTS'),
@@ -49,10 +46,10 @@ class ProfileUpdateForm extends Model
 
     public function update() // Обновить данные профиля
     {
-        if ($this->validate()) {
+        if ($this->validate()) { // Если валидация пройдена
             $user = $this->_user;
             $user->email = $this->email;
-            return $user->save();
+            return $user->save(); // Сохранить пользователя
         } else {
             return false;
         }

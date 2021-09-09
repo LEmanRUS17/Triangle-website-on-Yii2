@@ -20,13 +20,13 @@ class SignUpForm extends Model
             ['username', 'filter', 'filter' => 'trim'],                                                                       // Имя пользователя | Фильтр
             ['username', 'required'],                                                                                         // Имя пользователя | Обазательно
             ['username', 'match', 'pattern' => '#^[\w_-]+$#i'],                                                               // Имя пользователя |
-            ['username', 'unique', 'targetClass' => User::class, 'message' => 'This username has already been taken.'], // Имя пользователя |
+            ['username', 'unique', 'targetClass' => User::class, 'message' => Module::t('module', 'MESSAGE_SIGN_UP_USERNAME_ALREADY_TAKEN')], // Имя пользователя |
             ['username', 'string', 'min' => 2, 'max' => 255],                                                                 // Имя пользователя | Строка, минимальная длина 2, максимальная 255
 
             ['email', 'filter', 'filter' => 'trim'],                                                                            // Email | Фильтр
             ['email', 'required'],                                                                                              // Email | Обязательно
             ['email', 'email'],                                                                                                 // Email | Тип: email
-            ['email', 'unique', 'targetClass' => User::class, 'message' => 'This email address has already been taken.'], // Email |
+            ['email', 'unique', 'targetClass' => User::class, 'message' => Module::t('module', 'MESSAGE_SIGN_UP_EMAIL_ALREADY_TAKEN')], // Email |
 
             ['password', 'required'],           // Пароль | Обязательн
             ['password', 'string', 'min' => 6], // Пароль | Строка, минимальная длина 6
@@ -58,6 +58,7 @@ class SignUpForm extends Model
 
             // Выполнить проверку регестрации:
             if ($user->save()) { // Если пользователь сохранен
+                // Отправить сообщение:
                 Yii::$app->mailer->compose('@app/modules/user/mails/emailConfirm', ['user' => $user])
                     ->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name])
                     ->setTo($this->email)

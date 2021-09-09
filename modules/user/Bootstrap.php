@@ -13,7 +13,7 @@ class Bootstrap implements BootstrapInterface
         $this->registerTranslations($app);
     }
 
-    public function registerTranslations(Application $app)
+    public function registerTranslations(Application $app) // Настройки переводчика i18n
     {
         $app->i18n->translations['modules/user/*'] = [
             'class' => 'yii\i18n\PhpMessageSource',
@@ -25,24 +25,4 @@ class Bootstrap implements BootstrapInterface
         ];
     }
 
-   /* private function registerDependencies(Application $app)
-    {
-        $container = \Yii::$container;
-
-        $container->set(PasswordResetRequestForm::class, [], [
-            $app->params['user.passwordResetTokenExpire'],
-        ]);
-
-        $container->set(SignupForm::class, [], [
-            $app->params['user.defaultRole'],
-        ]);
-
-        $container->set(PasswordResetForm::class, function ($container, $args) use ($app) {
-            return new PasswordResetForm($args[0], $app->params['user.passwordResetTokenExpire']);
-        });
-
-        $container->set(UserQuery::class, function ($container, $args) use ($app) {
-            return new UserQuery($args[0], $app->params['user.emailConfirmTokenExpire']);
-        });
-    }*/
 }

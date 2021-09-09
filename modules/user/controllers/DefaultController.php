@@ -61,89 +61,88 @@ class DefaultController extends Controller
         ];
     }
 
-    public function actionIndex()
+    public function actionIndex() // Главная
     {
-        return $this->redirect(['profile/index'], 301);
+        return $this->redirect(['profile/index'], 301); // Перемещение с кодом 301
     }
 
     public function actionLogin() // Вход в акаунт
     {
-        $this->view->title = Module::t('module', 'TITLE_LOGIN');
+        $this->view->title = Module::t('module', 'TITLE_LOGIN'); // Заголовок страницы
 
         if (!Yii::$app->user->isGuest) { // Если выполнен вход
             return $this->goHome(); // Вернуть на главную
         }
 
         $model = new LoginForm(); // Обект модели LoginForm
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
+        if ($model->load(Yii::$app->request->post()) && $model->login()) { // Если: данные были загружены методом post && ыполнен вход
+            return $this->goBack(); // Вернутся на предыдущию страницу
         } else {
-            return $this->render('login', compact('model'));
+            return $this->render('login', compact('model')); // Перейти на страницу входа в акаунт
         }
     }
 
     public function actionLogout() // Выход из акаунта
     {
-        Yii::$app->user->logout();
-
-        return $this->goHome();
+        Yii::$app->user->logout(); // Выйти из акаунта
+        return $this->goHome();    // Вернутся на главную
     }
 
     public function actionSignUp() // Регестрация
     {
-        $this->view->title = Module::t('module', 'TITLE_SIGN_UP');
+        $this->view->title = Module::t('module', 'TITLE_SIGN_UP'); // Заголовок страницы
 
         /** @var SignupForm $model */
-        //$model = new SignUpForm(); // Обект модели SignUpForm
-        $model = Yii::createObject(SignupForm::class);
-        if ($model->load(Yii::$app->request->post())) {
-            if ($user = $model->signUp()) {
-                Yii::$app->getSession()->setFlash('success', Module::t('module', 'SUCCESS_EMAIL_ADDRESS_CONFIRM'));
-                return $this->goHome();
+        $model = Yii::createObject(SignupForm::class); // Создание модели
+        if ($model->load(Yii::$app->request->post())) { // Если модель загружена
+            if ($user = $model->signUp()) {  // Если регестрация прошла успештно
+                Yii::$app->getSession()->setFlash('success', Module::t('module', 'SUCCESS_EMAIL_ADDRESS_CONFIRM')); // Вывести сообщение
+                return $this->goHome(); // Вернутся на главную
             }
         }
 
-        return $this->render('signUp', compact('model'));
+        return $this->render('signUp', compact('model')); // Направить на страницу регестрации
     }
 
     public function actionEmailConfirm($token) // Подтверждение электронной почты
     {
+        // Если модель не саздана будет выполнено действие при ошибке:
         try {
-            $model = new EmailConfirm($token);
+            $model = new EmailConfirm($token); // Создать модель формы по токену
         } catch (InvalidArgumentException  $e) {
             throw new BadRequestHttpException($e->getMessage());
         }
 
-        if ($model->confirmEmail()) {
-            Yii::$app->getSession()->setFlash('success', Module::t('module', 'SUCCESS_EMAIL_SUCCESSFULLY_VERIFIED'));
+        if ($model->confirmEmail()) { // Если email был подтвержден
+            Yii::$app->getSession()->setFlash('success', Module::t('module', 'SUCCESS_EMAIL_SUCCESSFULLY_VERIFIED')); // Вывод сообщения
         } else {
-            Yii::$app->getSession()->setFlash('error', Module::t('module', 'ERROR_EMAIL_CONFIRMATION'));
+            Yii::$app->getSession()->setFlash('error', Module::t('module', 'ERROR_EMAIL_CONFIRMATION')); // Вывод сообщения
         }
 
-        return $this->goHome();
+        return $this->goHome(); // Вернутся на главную
     }
 
     public function actionPasswordResetRequest() // Запрос на сброс пароля
     {
-        $this->view->title = Module::t('module', 'TITLE_PASSWORD_RESET_REQUEST');
+        $this->view->title = Module::t('module', 'TITLE_PASSWORD_RESET_REQUEST'); // Заголовок страницы
 
         /** @var PasswordResetRequestForm $model */
-        $model = Yii::createObject(PasswordResetRequestForm::class);
-        if ($model->load(Yii::$app->request->post()) && $model->validate($model->email)) {
-            if ($model->sendEmail()) {
-                Yii::$app->getSession()->setFlash('success', Module::t('module', 'SUCCESS_EMAIL_RESET_PASSWORD'));
-
-                return $this->goHome();
+        $model = Yii::createObject(PasswordResetRequestForm::class); // Создание модели
+        if ($model->load(Yii::$app->request->post()) && $model->validate($model->email)) { // Если: данные загружены методом post && email прошол валидацию
+            if ($model->sendEmail()) { // Если писмь для сброса пароля было отправлено
+                Yii::$app->getSession()->setFlash('success', Module::t('module', 'SUCCESS_EMAIL_RESET_PASSWORD')); // Вывод сообщения
+                return $this->goHome(); // Вернутся на главную
             } else {
-                Yii::$app->getSession()->setFlash('error', Module::t('module', 'ERROR_PROBLEM_SHIPPING'));
+                Yii::$app->getSession()->setFlash('error', Module::t('module', 'ERROR_PROBLEM_SHIPPING')); // Вывод сообщения
             }
         }
 
-        return $this->render('requestPasswordResetToken', compact('model'));
+        return $this->render('requestPasswordResetToken', compact('model')); // Направление на страницу востановления пароля
     }
 
     public function actionPasswordReset($token) // Сброс пароля
     {
+        // Если модель не саздана будет выполнено действие при ошибке:
         try {
             /** @var PasswordResetForm $model */
             $model = Yii::createObject(PasswordResetForm::class, [$token]);
@@ -152,12 +151,11 @@ class DefaultController extends Controller
 
         }
 
-        if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->resetPassword()) {
-            Yii::$app->getSession()->setFlash('success', Module::t('module', 'SUCCESS_PASSWORD_SUCCESSFULLY'));
-
-            return $this->goHome();
+        if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->resetPassword()) { // Если: данные загружены методом post && модель прошла валидацию && сброс пароля
+            Yii::$app->getSession()->setFlash('success', Module::t('module', 'SUCCESS_PASSWORD_SUCCESSFULLY')); // Вывод сообщения
+            return $this->goHome(); // Вернутся на главную
         }
 
-        return $this->render('resetPassword', compact('model'));
+        return $this->render('resetPassword', compact('model')); // Направление на страницу сброса пароля
     }
 }

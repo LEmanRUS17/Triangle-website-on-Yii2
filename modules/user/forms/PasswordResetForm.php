@@ -36,7 +36,7 @@ class PasswordResetForm extends Model
         if (!$this->_user) { // Если пользователь найден
             throw new InvalidArgumentException(Module::t('module', 'ERROR_RASSWORD_RESET_TOKEN_EMPTY')); // Вывод сообщения
         }
-        parent::__construct($config);
+        parent::__construct($config); // Доступ к радительскому методу
     }
 
     /**
@@ -45,15 +45,15 @@ class PasswordResetForm extends Model
     public function rules() // Правила валидации
     {
         return [
-            ['password', 'required'],
-            ['password', 'string', 'min' => 6],
+            ['password', 'required'],           // Пароль | Обязательный
+            ['password', 'string', 'min' => 6], // Пароль | Строка, от 6 символов
         ];
     }
 
     /**
      * @inheritdoc
      */
-    public function attributeLabels()
+    public function attributeLabels() // Значение атрибутов
     {
         return [
             'password' => Module::t('module', 'USER_NEW_PASSWORD'),
@@ -61,17 +61,17 @@ class PasswordResetForm extends Model
     }
 
     /**
-     * Resets password.
+     * Сбросить пароль.
      *
-     * @return bool if password was reset.
+     * @return bool если пароль был сброшен
      */
-    public function resetPassword()
+    public function resetPassword() // Сбросить пароль
     {
         $user = $this->_user;
-        $user->setPassword($this->password);
-        $user->removePasswordResetToken();
-        $user->generateAuthKey();
+        $user->setPassword($this->password); // Генерация хэш пароля
+        $user->removePasswordResetToken();   // Удаление токена
+        $user->generateAuthKey();            // Генерация дополнительного ключа
 
-        return $user->save(false);
+        return $user->save(false); // Сохранить пользователя
     }
 }

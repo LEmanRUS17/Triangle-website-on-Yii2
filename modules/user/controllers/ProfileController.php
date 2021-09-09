@@ -1,6 +1,5 @@
 <?php
 
-
 namespace app\modules\user\controllers;
 
 use app\modules\user\forms\ProfileUpdateForm;
@@ -30,21 +29,21 @@ class ProfileController extends Controller
 
     public function actionIndex() // Страница просмотра профиля
     {
-        $this->view->title = Module::t('module', 'TITLE_PROFILE');
+        $this->view->title = Module::t('module', 'TITLE_PROFILE'); // Заголовок страницы
 
-        $model = $this->findModel();
+        $model = $this->findModel(); // Получить модель пользователя
 
         return $this->render('index', compact('model')); // Перейти на страницу "Профиль пользователя"
     }
 
     public function actionUpdate() // Страница редактирования профиля
     {
-        $this->view->title = Module::t('module', 'TITLE_PROFILE_UP');
+        $this->view->title = Module::t('module', 'TITLE_PROFILE_UP'); // Заголовок страницы
 
-        $user  = $this->findModel();
-        $model = new ProfileUpdateForm($user);
+        $user  = $this->findModel();           // Получить модель пользователя
+        $model = new ProfileUpdateForm($user); // Получить модель редактирования пользователя
 
-        if ($model->load(Yii::$app->request->post()) && $model->update()) { // Если модель была получена методом пост и сохранена
+        if ($model->load(Yii::$app->request->post()) && $model->update()) { // Если: данные получены методом пост && данные профиля обновлены
             return $this->redirect(['index']); // Перейти на страницу "Профиль пользователя"
         } else {
             return $this->render('up_date', compact('model')); // Перейти на страницу "Редактирование пользователя"
@@ -53,22 +52,20 @@ class ProfileController extends Controller
 
     public function actionPasswordChange() // Страница смены пароля
     {
-        $this->view->title = Module::t('module', 'TITLE_PASSWORD_CHANGE');
+        $this->view->title = Module::t('module', 'TITLE_PASSWORD_CHANGE'); // Заголовок страницы
 
-        $user = $this->findModel();
-        $model = new PasswordChangeForm($user);
+        $user = $this->findModel();             // Получить модель пользователя
+        $model = new PasswordChangeForm($user); // Получить модель смены пароля пользователя
 
-        if ($model->load(Yii::$app->request->post()) && $model->changePassword()) {
-            return $this->redirect(['index']);
+        if ($model->load(Yii::$app->request->post()) && $model->changePassword()) { // Если: данные получены методом пост && изменен пароль
+            return $this->redirect(['index']); // Перейти на страницу "Профиль пользователя"
         } else {
-            return $this->render('passwordChange', [
-                'model' => $model,
-            ]);
+            return $this->render('passwordChange', compact('model')); // Перейти на страницу "Редактирование пароля"
         }
     }
 
     /**
-     * @return User the loaded model
+     * @return User загруженная модель
      */
     private function findModel() // Связь с моделью User
     {
