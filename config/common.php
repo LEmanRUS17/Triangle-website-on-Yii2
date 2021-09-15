@@ -22,7 +22,7 @@ return [
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
-        '@tests' => '@app/tests',
+        //'@tests' => '@app/tests',
     ],
     'components' => [
         'i18n' => [ // Переводчик
@@ -41,11 +41,6 @@ return [
                 ],
             ],
         ],
-        'request' => [
-            // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => 'Wh_SDs2svsGnNeUN9OFi45tDjLyHylvf',
-            'baseUrl' => '',
-        ],
         'db' => [
             'class' => 'yii\db\Connection',
             'charset' => 'utf8',
@@ -54,11 +49,9 @@ return [
             'class' => 'yii\swiftmailer\Mailer',
         ],
         'cache' => [
-            'class' => 'yii\caching\DummyCache',
+            'class' => 'yii\caching\FileCache',
         ],
-        'log' => [
-            'class' => 'yii\log\Dispatcher',
-        ],
+
         'urlManager' => [
             'enablePrettyUrl'     => true,
             'showScriptName'      => false,

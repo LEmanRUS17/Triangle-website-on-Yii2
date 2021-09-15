@@ -8,7 +8,7 @@ $params = ArrayHelper::merge(
 );
 
 $config = [
-    'id'           => 'app',
+    'id' => 'app',
     'modules' => [
         'main' => [
             'class' => 'app\modules\main\Module',
