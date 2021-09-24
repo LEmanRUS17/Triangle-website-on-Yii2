@@ -13,6 +13,8 @@ return [
     'ATTRIBUTE_EMAIL_CONFIRM_TOKEN'  => 'Токен подтверждения электронной почты',
     'ATTRIBUTE_PASSWORD_HASH'        => 'Хэшированый пароль',
     'ATTRIBUTE_PASSWORD_RESET_TOKEN' => 'Токен смены пароля',
+    'ATTRIBUTE_USER_NEW_PASSWORD'    => 'Новый пароль',
+    'ATTRIBUTE_USER_REPEAT_PASSWORD' => 'Подтверждение пароля',
 
     // Статусы модели User:
     'STATUS_BLOCKED' => 'Заблокирован',
@@ -38,6 +40,10 @@ return [
     'TITLE_PROFILE'                => 'Профиль пользователя',
     'TITLE_PROFILE_UP'             => 'Редактирование пользователя',
     'TITLE_PASSWORD_CHANGE'        => 'Смена пароля',
+    'TITLE_USER_PROFILES'          => 'Список пользователей',
+    'TITLE_USER_UPDATE'            => 'Редактирование пользователя',
+    'TITLE_USER_CREATE'            => 'Создание пользователя',
+    'TITLE_USER_PROFILE'           => 'Профиль пользователя',
 
     // Редактирование пользователя:
     'UP_USER_EMAIL'       => 'Email',
@@ -89,4 +95,11 @@ return [
     'MESSAGE_USER_EMAIL'                     => 'Этот адрес электронной почты уже занят.',  // Правило валидации модели User модуля User
     'MESSAGE_SIGN_UP_USERNAME_ALREADY_TAKEN' => 'Это имя пользователя уже занято.',         // Сообщение валидации модели SignUpForm модуля User
     'MESSAGE_SIGN_UP_EMAIL_ALREADY_TAKEN'    => 'Этот адрес электронной почты уже занят. ', // Сообщение валидации модели SignUpForm модуля User
+
+    // Список пользователей:
+    'USERS_PROFILE_CREATE_BUTTON_SAVE' => 'Сохранить',
+
+    // Администрирование:
+    'ADMIN_USERS'     => 'Список пользователей',
+    'ADMIN_USERS_ADD' => 'Создать пользователя',
 ];

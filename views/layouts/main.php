@@ -99,12 +99,12 @@ AppAsset::register($this);
                         </li>                         
                         <!--<li><a href="<?//= Url::toRoute(['shortcodes/index']) ?>">Шорткоды</a></li>-->
                         <?php if (Yii::$app->user->isGuest) : ?>
-                            <li><a href="<?= yii\helpers\Url::toRoute(['/user/default/login']) ?>"><?= Yii::t('app', 'NAV_LOGIN') ?></a></li>
+                            <li><a href="<?= yii\helpers\Url::toRoute(['/user/frontend/default/login']) ?>"><?= Yii::t('app', 'NAV_LOGIN') ?></a></li>
                         <?php else : ?>
-                        <li class="dropdown"><a href="<?= Url::toRoute(['/user/profile/index']) ?>"><?= Yii::t('app', 'NAV_PROFILE') ?> (<?= Yii::$app->user->identity->username ?>) <i class="fa fa-angle-down"></i></a>
+                        <li class="dropdown"><a href="<?= Url::toRoute(['/user/frontend/profile/index']) ?>"><?= Yii::t('app', 'NAV_PROFILE') ?> (<?= Yii::$app->user->identity->username ?>) <i class="fa fa-angle-down"></i></a>
                             <ul role="menu" class="sub-menu">
-                                <li><a href="<?= yii\helpers\Url::toRoute(['/user/default/logout']) ?>"><?= Yii::t('app', 'NAV_LOGOUT') ?></a></li>
-                                <li><a href="<?= yii\helpers\Url::toRoute(['/user/profile/index']) ?>"><?= Yii::t('app', 'NAV_PROFILE') ?></a></li>
+                                <li><a href="<?= yii\helpers\Url::toRoute(['/user/frontend/default/logout']) ?>"><?= Yii::t('app', 'NAV_LOGOUT') ?></a></li>
+                                <li><a href="<?= yii\helpers\Url::toRoute(['/user/frontend/profile/index']) ?>"><?= Yii::t('app', 'NAV_PROFILE') ?></a></li>
                                 <?//php if(Yii::$app->user->can('admin')): ?>
                                     <li><a href="<?= yii\helpers\Url::toRoute(['/admin/default/index']) ?>"><?= Yii::t('app', 'NAV_ADMIN') ?></a></li>
                                 <?//php endif; ?>

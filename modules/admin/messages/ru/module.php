@@ -4,10 +4,8 @@ return [
 
     // Заголовки:
     'TITLE_ADMIN'         => 'Администрирование',
-    'TITLE_USER_PROFILES' => 'Список пользователей',
-    'TITLE_USER_PROFILE'  => 'Профиль пользователя',
-    'TITLE_USER_CREATE'   => 'Создание пользователя',
-    'TITLE_USER_UPDATE'   => 'Редактирование пользователя',
+
+
 
     // Сообщения:
     'MESSAGE_PAGE_DOES_NOT_EXIT'     => 'Запрошенная страница не существует',       // Страницы пользователя не существует
@@ -26,15 +24,11 @@ return [
     'ATTRIBUTE_USER_DATE_FROM'       => 'data_from',
     'ATTRIBUTE_USER_DATE_TO'         => 'data_to',
 
-    'ATTRIBUTE_USER_NEW_PASSWORD'    => 'Новый пароль',
-    'ATTRIBUTE_USER_REPEAT_PASSWORD' => 'Подтверждение пароля',
-
     // Администрирование:
     'ADMIN_USERS' => 'Список пользователей',
 
     // Список пользователей:
     'USERS_PROFILE_CREATE_BUTTON'      => 'Добавить пользователя',
-    'USERS_PROFILE_CREATE_BUTTON_SAVE' => 'Сохранить',
     'USERS_PROFILE_UPDATE'             => 'Редактировать',
     'USERS_PROFILE_DELETE'             => 'Удалить',
     'USERS_PROFILE_SEARCH_BUTTON'      => 'Search',

@@ -15,7 +15,7 @@ use app\modules\admin\Module;
         <h1 class="title"><?= Html::encode($this->title) ?></h1>
 
         <p>
-            <?= Html::a(Module::t('module', 'ADMIN_USERS'), ['users/index'], ['class' => 'btn btn-primary']) ?>
+            <?= Html::a(Module::t('module', 'ADMIN_USERS'), ['//user/backend/default/index'], ['class' => 'btn btn-primary']) ?>
         </p>
     </div>
 </section>

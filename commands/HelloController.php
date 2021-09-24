@@ -13,7 +13,7 @@ use yii\console\ExitCode;
 /**
  * This command echoes the first argument that you have entered.
  *
- * This command is provided as an example for you to learn how to create console commands.
+ * This command is provided as an example for you to learn how to create console console.
  *
  * @author Qiang Xue <qiang.xue@gmail.com>
  * @since 2.0

@@ -56,7 +56,7 @@ return [
             'enablePrettyUrl'     => true,
             'showScriptName'      => false,
             'enableStrictParsing' => false, // Включить строгий разбор UPL. https://www.yiiframework.com/doc/api/2.0/yii-web-urlmanager#$enableStrictParsing-detail
-            'rules' => [
+            'rules' => [/*
                 //'' => 'main/default/index',
                 'contact' => 'main/contact/index',
                 '<_a:error>' => 'main/default/<_a>',
@@ -65,7 +65,7 @@ return [
                 '<_m:[\w\-]+>/<_c:[\w\-]+>/<id:\d+>' => '<_m>/<_c>/view',
                 '<_m:[\w\-]+>/<_c:[\w\-]+>/<id:\d+>/<_a:[\w\-]+>' => '<_m>/<_c>/<_a>',
                 '<_m:[\w\-]+>' => '<_m>/default/index',
-                //'<_m:[\w\-]+>/<_c:[\w\-]+>' => '<_m>/<_c>/index',
+                //'<_m:[\w\-]+>/<_c:[\w\-]+>' => '<_m>/<_c>/index',*/
             ],
         ],
     ],
