@@ -2,7 +2,6 @@
 
 namespace app\modules\admin\controllers;
 
-use app\modules\admin\Module;
 use yii\web\Controller;
 
 /**
@@ -16,8 +15,6 @@ class DefaultController extends Controller
      */
     public function actionIndex()
     {
-        $this->view->title = Module::t('module', 'TITLE_ADMIN');
-
         return $this->render('index');
     }
 }

@@ -10,14 +10,21 @@ $params = ArrayHelper::merge(
 $config = [
     'id' => 'app',
     'modules' => [
+        'admin' => [
+            'class' => 'app\modules\admin\Module',
+            'modules' => [ // Управление пользователями
+                'class' => 'app\modules\user\Module',
+                'controllerNamespace' => 'app\modules\user\controllers\backend',
+                'viewPath' => '@app/modules/user/views/backend',
+            ],
+        ],
         'main' => [
             'class' => 'app\modules\main\Module',
         ],
         'user' => [
             'class' => 'app\modules\user\Module',
-        ],
-        'admin' => [
-            'class' => 'app\modules\admin\Module',
+            'controllerNamespace' => 'app\modules\user\controllers\frontend',
+            'viewPath' => '@app/modules/user/views/frontend',
         ],
     ],
     'components' => [
