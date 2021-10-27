@@ -29,6 +29,7 @@ class AppAsset extends AssetBundle
     ];
     public $js = [
         'js/jquery.js',
+        'js/jquery.countTo.js',
         'js/bootstrap.min.js',
         'js/lightbox.min.js',
         'js/wow.min.js',

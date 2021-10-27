@@ -70,11 +70,11 @@ AppAsset::register($this);
                                 <li><a href="<?= Url::toRoute(['pages/index']) ?>">About</a></li>
                                 <li><a href="<?= Url::toRoute(['pages/about2']) ?>">About 2</a></li>
                                 <li><a href="<?= Url::toRoute(['pages/service']) ?>">Services</a></li>
-                                <li><a href="<?= Url::toRoute(['pages/picting']) ?>">Pricing</a></li>
+                                <li><a href="<?= Url::toRoute(['pages/pricing']) ?>">Pricing</a></li>
                                 <li><a href="<?= Url::toRoute(['pages/contact']) ?>">Contact us</a></li>
                                 <li><a href="<?= Url::toRoute(['pages/contact2']) ?>">Contact us 2</a></li>
-                                <li><a href="<?= Url::toRoute(['pages/404']) ?>">404 error</a></li>
-                                <li><a href="<?= Url::toRoute(['pages/comming-soon']) ?>">Coming Soon</a></li>
+                                <li><a href="<?= Url::toRoute(['/main/default/404']) ?>">404 error</a></li>
+                                <li><a href="<?= Url::toRoute(['/main/default/coming-soon']) ?>">Coming Soon</a></li>
                             </ul>
                         </li>                    
                         <li class="dropdown"><a href="<?= Url::toRoute(['blog/index']) ?>"><?= Yii::t('app', 'NAV_BLOG') ?> <i class="fa fa-angle-down"></i></a>
