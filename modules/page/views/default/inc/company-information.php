@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-6">
-                <img src="/web/images/aboutus/1.png" class="img-responsive" alt="">
+                <img src="/domains/Triangle.loc/web/images/aboutus/1.png" class="img-responsive" alt="">
             </div>
             <div class="col-sm-6 padding-top">
                 <p>Shoulder bresaola sausage consequat ground round duis excepteur exercitation landjaeger sunt. Duis officia sed frankfurter dolore pastrami tenderloin.</p>

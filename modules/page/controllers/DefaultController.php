@@ -1,8 +1,10 @@
 <?php
 
-namespace app\controllers;
+namespace app\modules\page\controllers;
 
-class PagesController extends AppController
+use yii\web\Controller;
+
+class DefaultController extends Controller
 {
     /**
      * Displays homepage.
@@ -28,14 +30,4 @@ class PagesController extends AppController
     {
         return $this->render('pricing');
     }
-
-//    public function actionContact()
-//    {
-//        return $this->render('contact');
-//    }
-//
-//    public function actionContact2()
-//    {
-//        return $this->render('contact2');
-//    }
 }

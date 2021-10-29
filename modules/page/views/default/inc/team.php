@@ -17,7 +17,7 @@
                             <div class="team-single-wrapper">
                                 <div class="team-single">
                                     <div class="person-thumb">
-                                        <img src="/web/images/aboutus/1.jpg" class="img-responsive" alt="">
+                                        <img src="/domains/Triangle.loc/web/images/aboutus/1.jpg" class="img-responsive" alt="">
                                     </div>
                                     <div class="social-profile">
                                         <ul class="nav nav-pills">
@@ -37,7 +37,7 @@
                             <div class="team-single-wrapper">
                                 <div class="team-single">
                                     <div class="person-thumb">
-                                        <img src="/web/images/aboutus/2.jpg" class="img-responsive" alt="">
+                                        <img src="/domains/Triangle.loc/web/images/aboutus/2.jpg" class="img-responsive" alt="">
                                     </div>
                                     <div class="social-profile">
                                         <ul class="nav nav-pills">
@@ -57,7 +57,7 @@
                             <div class="team-single-wrapper">
                                 <div class="team-single">
                                     <div class="person-thumb">
-                                        <img src="/web/images/aboutus/3.jpg" class="img-responsive" alt="">
+                                        <img src="/domains/Triangle.loc/web/images/aboutus/3.jpg" class="img-responsive" alt="">
                                     </div>
                                     <div class="social-profile">
                                         <ul class="nav nav-pills">
@@ -77,7 +77,7 @@
                             <div class="team-single-wrapper">
                                 <div class="team-single">
                                     <div class="person-thumb">
-                                        <img src="/web/images/aboutus/1.jpg" class="img-responsive" alt="">
+                                        <img src="/domains/Triangle.loc/web/images/aboutus/1.jpg" class="img-responsive" alt="">
                                     </div>
                                     <div class="social-profile">
                                         <ul class="nav nav-pills">
@@ -99,7 +99,7 @@
                             <div class="team-single-wrapper">
                                 <div class="team-single">
                                     <div class="person-thumb">
-                                        <img src="/web/images/aboutus/4.jpg" class="img-responsive" alt="">
+                                        <img src="/domains/Triangle.loc/web/images/aboutus/4.jpg" class="img-responsive" alt="">
                                     </div>
                                     <div class="social-profile">
                                         <ul class="nav nav-pills">
@@ -119,7 +119,7 @@
                             <div class="team-single-wrapper">
                                 <div class="team-single">
                                     <div class="person-thumb">
-                                        <img src="/web/images/aboutus/3.jpg" class="img-responsive" alt="">
+                                        <img src="/domains/Triangle.loc/web/images/aboutus/3.jpg" class="img-responsive" alt="">
                                     </div>
                                     <div class="social-profile">
                                         <ul class="nav nav-pills">
@@ -139,7 +139,7 @@
                             <div class="team-single-wrapper">
                                 <div class="team-single">
                                     <div class="person-thumb">
-                                        <img src="/web/images/aboutus/2.jpg" class="img-responsive" alt="">
+                                        <img src="/domains/Triangle.loc/web/images/aboutus/2.jpg" class="img-responsive" alt="">
                                     </div>
                                     <div class="social-profile">
                                         <ul class="nav nav-pills">
@@ -159,7 +159,7 @@
                             <div class="team-single-wrapper">
                                 <div class="team-single">
                                     <div class="person-thumb">
-                                        <img src="/web/images/aboutus/1.jpg" class="img-responsive" alt="">
+                                        <img src="/domains/Triangle.loc/web/images/aboutus/1.jpg" class="img-responsive" alt="">
                                     </div>
                                     <div class="social-profile">
                                         <ul class="nav nav-pills">

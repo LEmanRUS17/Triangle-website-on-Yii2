@@ -67,12 +67,12 @@ AppAsset::register($this);
                         <li class="active"><a href="<?= Url::home() ?>"><?= Yii::t('app', 'NAV_HOME') ?> </a></li>
                         <li class="dropdown"><a href="#"><?= Yii::t('app', 'NAV_PAGES') ?> <i class="fa fa-angle-down"></i></a>
                             <ul role="menu" class="sub-menu">
-                                <li><a href="<?= Url::toRoute(['pages/index']) ?>">About</a></li>
-                                <li><a href="<?= Url::toRoute(['pages/about2']) ?>">About 2</a></li>
-                                <li><a href="<?= Url::toRoute(['pages/service']) ?>">Services</a></li>
-                                <li><a href="<?= Url::toRoute(['pages/pricing']) ?>">Pricing</a></li>
-                                <li><a href="<?= Url::toRoute(['pages/contact']) ?>">Contact us</a></li>
-                                <li><a href="<?= Url::toRoute(['pages/contact2']) ?>">Contact us 2</a></li>
+                                <li><a href="<?= Url::toRoute(['/page/default/index']) ?>">About</a></li>
+                                <li><a href="<?= Url::toRoute(['/page/default/about2']) ?>">About 2</a></li>
+                                <li><a href="<?= Url::toRoute(['/page/default/service']) ?>">Services</a></li>
+                                <li><a href="<?= Url::toRoute(['/page/default/pricing']) ?>">Pricing</a></li>
+                                <li><a href="<?= Url::toRoute(['/page/default/contact']) ?>">Contact us</a></li>
+                                <li><a href="<?= Url::toRoute(['/page/default/contact2']) ?>">Contact us 2</a></li>
                                 <li><a href="<?= Url::toRoute(['/main/default/404']) ?>">404 error</a></li>
                                 <li><a href="<?= Url::toRoute(['/main/default/coming-soon']) ?>">Coming Soon</a></li>
                             </ul>
@@ -99,12 +99,12 @@ AppAsset::register($this);
                         </li>                         
                         <!--<li><a href="<?//= Url::toRoute(['shortcodes/index']) ?>">Шорткоды</a></li>-->
                         <?php if (Yii::$app->user->isGuest) : ?>
-                            <li><a href="<?= yii\helpers\Url::toRoute(['/user/frontend/default/login']) ?>"><?= Yii::t('app', 'NAV_LOGIN') ?></a></li>
+                            <li><a href="<?= yii\helpers\Url::toRoute(['/user/default/login']) ?>"><?= Yii::t('app', 'NAV_LOGIN') ?></a></li>
                         <?php else : ?>
-                        <li class="dropdown"><a href="<?= Url::toRoute(['/user/frontend/profile/index']) ?>"><?= Yii::t('app', 'NAV_PROFILE') ?> (<?= Yii::$app->user->identity->username ?>) <i class="fa fa-angle-down"></i></a>
+                        <li class="dropdown"><a href="<?= Url::toRoute(['/user/profile/index']) ?>"><?= Yii::t('app', 'NAV_PROFILE') ?> (<?= Yii::$app->user->identity->username ?>) <i class="fa fa-angle-down"></i></a>
                             <ul role="menu" class="sub-menu">
-                                <li><a href="<?= yii\helpers\Url::toRoute(['/user/frontend/default/logout']) ?>"><?= Yii::t('app', 'NAV_LOGOUT') ?></a></li>
-                                <li><a href="<?= yii\helpers\Url::toRoute(['/user/frontend/profile/index']) ?>"><?= Yii::t('app', 'NAV_PROFILE') ?></a></li>
+                                <li><a href="<?= yii\helpers\Url::toRoute(['/user/default/logout']) ?>"><?= Yii::t('app', 'NAV_LOGOUT') ?></a></li>
+                                <li><a href="<?= yii\helpers\Url::toRoute(['/user/profile/index']) ?>"><?= Yii::t('app', 'NAV_PROFILE') ?></a></li>
                                 <?//php if(Yii::$app->user->can('admin')): ?>
                                     <li><a href="<?= yii\helpers\Url::toRoute(['/admin/default/index']) ?>"><?= Yii::t('app', 'NAV_ADMIN') ?></a></li>
                                 <?//php endif; ?>

@@ -12,15 +12,21 @@ $config = [
     'modules' => [
         'admin' => [
             'class' => 'app\modules\admin\Module',
-            'modules' => [ // Управление пользователями
-                'class' => 'app\modules\user\Module',
-                'controllerNamespace' => 'app\modules\user\controllers\backend',
-                'viewPath' => '@app/modules/user/views/backend',
-            ],
+            //'layout' => '@app/views/layouts/admin',
+            'modules' => [
+                'user' => [
+                    'class' => 'app\modules\user\Module',
+                    'controllerNamespace' => 'app\modules\user\controllers\backend',
+                    'viewPath' => '@app/modules/user/views/backend',
+                ],
+            ]
         ],
         'main' => [
             'class' => 'app\modules\main\Module',
         ],
+        'page' => [
+            'class' => 'app\modules\page\Module',
+            ],
         'user' => [
             'class' => 'app\modules\user\Module',
             'controllerNamespace' => 'app\modules\user\controllers\frontend',

@@ -5,7 +5,7 @@ namespace app\modules\main\controllers;
 use yii\web\Controller;
 
 /**
- * Default controller for the `main` module
+ * Default controllers for the `main` module
  */
 class DefaultController extends Controller
 {
@@ -23,9 +23,9 @@ class DefaultController extends Controller
         return $this->render('index');
     }*/
 
-    public function actionsComingSoon()
-    {
-        return $this->render('coming-soon');
-    }
+//    public function actionsComingSoon()
+//    {
+//        return $this->render('coming-soon');
+//    }
 
 }

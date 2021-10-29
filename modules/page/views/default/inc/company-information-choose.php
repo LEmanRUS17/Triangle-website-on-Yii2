@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="0ms">
-                <img src="/web/images/services/4.png" class="img-responsive" alt="">
+                <img src="/domains/Triangle.loc/web/images/services/4.png" class="img-responsive" alt="">
             </div>
             <div class="col-sm-6 padding-top wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="0ms">
                 <h2>Why Choose Us?</h2>
