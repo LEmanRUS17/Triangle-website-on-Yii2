@@ -6,6 +6,7 @@ use app\modules\user\Module;
 
 //$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'TITLE_PROFILE'), 'url' => ['index']];
 //$this->params['breadcrumbs'][] = $this->title;
+$this->title = Module::t('module', 'TITLE_PROFILE_UP');
 ?>
 
 <section id="user-profile-update">

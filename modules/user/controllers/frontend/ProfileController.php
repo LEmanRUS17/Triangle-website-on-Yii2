@@ -29,8 +29,6 @@ class ProfileController extends Controller
 
     public function actionIndex() // Страница просмотра профиля
     {
-        $this->view->title = Module::t('module', 'TITLE_PROFILE'); // Заголовок страницы
-
         $model = $this->findModel(); // Получить модель пользователя
 
         return $this->render('index', compact('model')); // Перейти на страницу "Профиль пользователя"
@@ -38,8 +36,6 @@ class ProfileController extends Controller
 
     public function actionUpdate() // Страница редактирования профиля
     {
-        $this->view->title = Module::t('module', 'TITLE_PROFILE_UP'); // Заголовок страницы
-
         $user  = $this->findModel();           // Получить модель пользователя
         $model = new ProfileUpdateForm($user); // Получить модель редактирования пользователя
 
@@ -52,8 +48,6 @@ class ProfileController extends Controller
 
     public function actionPasswordChange() // Страница смены пароля
     {
-        $this->view->title = Module::t('module', 'TITLE_PASSWORD_CHANGE'); // Заголовок страницы
-
         $user = $this->findModel();             // Получить модель пользователя
         $model = new PasswordChangeForm($user); // Получить модель смены пароля пользователя
 

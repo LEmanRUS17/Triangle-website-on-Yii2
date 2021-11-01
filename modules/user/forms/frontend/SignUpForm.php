@@ -31,7 +31,7 @@ class SignUpForm extends Model
             ['password', 'required'],           // Пароль | Обязательн
             ['password', 'string', 'min' => 6], // Пароль | Строка, минимальная длина 6
 
-            ['verifyCode', 'captcha', 'captchaAction' => '/user/frontend/default/captcha'], // Код проверки |
+            ['verifyCode', 'captcha', 'captchaAction' => '/user/default/captcha'], // Код проверки |
         ];
     }
 

@@ -3,7 +3,6 @@
 namespace app\modules\user\controllers\backend;
 
 use app\modules\user\forms\LoginForm;
-use app\modules\user\Module;
 use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
@@ -41,8 +40,6 @@ class UserController extends Controller
 
     public function actionLogin() // Вход в акаунт
     {
-        $this->view->title = Module::t('module', 'TITLE_LOGIN'); // Заголовок страницы
-
         if (!Yii::$app->user->isGuest) { // Если выполнен вход
             return $this->goHome(); // Вернуть на главную
         }

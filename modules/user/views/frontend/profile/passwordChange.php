@@ -9,6 +9,7 @@ use app\modules\user\Module;
 
 //$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'TITLE_PROFILE'), 'url' => ['index']];
 //$this->params['breadcrumbs'][] = $this->title;
+$this->title = Module::t('module', 'TITLE_PASSWORD_CHANGE');
 ?>
 <section id="user-profile-update">
     <div class="container user-profile-password-change">

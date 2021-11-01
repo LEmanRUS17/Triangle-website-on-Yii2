@@ -36,8 +36,6 @@ class DefaultController extends Controller
      */
     public function actionIndex()
     {
-        $this->view->title = Module::t('module', 'TITLE_USER_PROFILES');
-
         $searchModel = new UserSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -55,7 +53,6 @@ class DefaultController extends Controller
      */
     public function actionView($id)
     {
-        $this->view->title = Module::t('module', 'TITLE_USER_PROFILE');
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -68,8 +65,6 @@ class DefaultController extends Controller
      */
     public function actionCreate()
     {
-        $this->view->title = Module::t('module', 'TITLE_USER_CREATE');
-
         $model = new User();
         $model->scenario = User::SCENARIO_ADMIN_CREATE;
         $model->status   = User::STATUS_ACTIVE;
@@ -92,8 +87,6 @@ class DefaultController extends Controller
      */
     public function actionUpdate($id)
     {
-        $this->view->title = Module::t('module', 'TITLE_USER_UPDATE');
-
         $model = $this->findModel($id);                 // Получить пользователя по $id
         $model->scenario = User::SCENARIO_ADMIN_UPDATE; // Запуск сценария
 

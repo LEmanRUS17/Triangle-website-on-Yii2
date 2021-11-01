@@ -63,10 +63,11 @@ return [
     'LOGIN_RECOVERY_PASSWORD' => 'Востановить пароль.',
 
     // Форма регестрации:
-    'SIGN_UP_USERNAME'    => 'Логин',
-    'SIGN_UP_PASSWORD'    => 'Пароль',
-    'SIGN_UP_EMAIL'       => 'E-mail',
-    'SIGN_UP_VERIFY_CODE' => 'Введите текст с картинки',
+    'SIGN_UP_USERNAME'            => 'Логин',
+    'SIGN_UP_PASSWORD'            => 'Пароль',
+    'SIGN_UP_EMAIL'               => 'E-mail',
+    'SIGN_UP_VERIFY_CODE'         => 'Введите текст с картинки',
+    'SIGN_UP_BUTTON_REGISTRATION' => 'Регистрация',
 
     // Просмотр пользователя:
     'VIEW_USER_UP'          => 'Редактирование пользователя',
@@ -103,5 +104,8 @@ return [
     'ADMIN_USERS'     => 'Список пользователей',
     'ADMIN_USERS_ADD' => 'Создать пользователя',
 
+    // Текст:
+    'LOGIN_TEXT_ENTRY_FIELD' => 'Пожалуйста, заполните следующие поля для входа:',
+    'SIGN_UP_TEXT_REG'     => 'Пожалуйста, заполните следующие поля, чтобы зарегистрироваться:',
 
 ];

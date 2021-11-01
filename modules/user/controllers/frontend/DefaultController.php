@@ -68,8 +68,6 @@ class DefaultController extends Controller
 
     public function actionLogin() // Вход в акаунт
     {
-        $this->view->title = Module::t('module', 'TITLE_LOGIN'); // Заголовок страницы
-
         if (!Yii::$app->user->isGuest) { // Если выполнен вход
             return $this->goHome(); // Вернуть на главную
         }
@@ -90,8 +88,6 @@ class DefaultController extends Controller
 
     public function actionSignUp() // Регестрация
     {
-        $this->view->title = Module::t('module', 'TITLE_SIGN_UP'); // Заголовок страницы
-
         /** @var SignUpForm $model */
         $model = Yii::createObject(SignupForm::class); // Создание модели
         if ($model->load(Yii::$app->request->post())) { // Если модель загружена
@@ -124,8 +120,6 @@ class DefaultController extends Controller
 
     public function actionPasswordResetRequest() // Запрос на сброс пароля
     {
-        $this->view->title = Module::t('module', 'TITLE_PASSWORD_RESET_REQUEST'); // Заголовок страницы
-
         /** @var PasswordResetRequestForm $model */
         $model = Yii::createObject(PasswordResetRequestForm::class); // Создание модели
         if ($model->load(Yii::$app->request->post()) && $model->validate($model->email)) { // Если: данные загружены методом post && email прошол валидацию

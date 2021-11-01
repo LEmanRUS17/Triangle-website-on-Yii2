@@ -8,13 +8,13 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\bootstrap\ActiveForm;
 use app\modules\user\Module;
-
+$this->title = Module::t('module', 'TITLE_LOGIN');
 //$this->params['breadcrumbs'][] = $this->title;
 ?>
 <section id="login">
     <div class="container site-login">
         <h1 class="title"><?= Html::encode($this->title) ?></h1>
-        <p>Пожалуйста, заполните следующие поля для входа:</p>
+        <p><?= Module::t('module', 'LOGIN_TEXT_ENTRY_FIELD'); ?></p>
 
         <div class="row">
             <div class="col-lg-5">
