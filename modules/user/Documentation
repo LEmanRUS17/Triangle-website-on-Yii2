@@ -1,0 +1,60 @@
+/controllers
+    /backend
+        DefaultController.php
+        UserController.php
+    /console
+        CronController.php
+        UsersController.php
+    /frontend
+        DefaultController.php
+        ProfileController.php
+/forms
+    /backend
+        /search
+            UserSearch.php
+    /frontend
+        EmailConfirm.php
+        PasswordChangeForm.php
+        PasswordResetForm.php
+        PasswordResetRequestForm.php
+        ProfileUpdateForm.php
+        SignUpForm.php
+    LoginForm.php
+/mails
+    emailConfirm.php
+    passwordReset.php
+/messages
+    /ru
+        module.php
+/models
+    /backend
+        User.php
+    /query
+        UserQuery.php
+    User.php
+/views
+    /backend
+        /default
+            _form.php
+            create.php
+            index.php
+            update.php
+            view.php
+        /user
+            login.php
+    /frontend
+        /default
+            login.php
+            requestPasswordResetToken.php
+            resetPassword.php
+            signUp.php
+        /profile
+            index.php
+            passwordChange.php
+            up_date.php
+/widgets
+    /backend
+        /grid
+            RoleColumn.php
+Bootstrap.php
+Module.php

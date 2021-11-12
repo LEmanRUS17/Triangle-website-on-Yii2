@@ -32,6 +32,9 @@ $config = [
             'controllerNamespace' => 'app\modules\user\controllers\frontend',
             'viewPath' => '@app/modules/user/views/frontend',
         ],
+        'blog' => [
+            'class' => 'app\modules\blog\Module',
+        ],
     ],
     'components' => [
         'user' => [

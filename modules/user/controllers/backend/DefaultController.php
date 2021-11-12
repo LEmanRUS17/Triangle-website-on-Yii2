@@ -11,7 +11,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * UserController реализует действия CRUD для модели User.
+ * Реализация действий CRUD для модели User.
  */
 class DefaultController extends Controller
 {
@@ -36,10 +36,10 @@ class DefaultController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new UserSearch();
+        $searchModel = new UserSearch(); // Получить всех пользователей
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        return $this->render('index', [
+        return $this->render('index', [ // Рендер вида
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
@@ -47,15 +47,15 @@ class DefaultController extends Controller
 
     /**
      * Отображает одну модель пользователя.
-     * @param integer $id
+     * @param integer $id Пользователя в БД
      * @return mixed
      * @throws NotFoundHttpException если модель не может быть найдена
      */
     public function actionView($id)
     {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
+        $model = $this->findModel($id); // Получить модель пользователя по $id
+
+        return $this->render('view', compact('model')); // Рендер вида
     }
 
     /**
