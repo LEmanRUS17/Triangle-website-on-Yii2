@@ -26,7 +26,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'content') ?>
 
-    <?= $form->field($model, 'date') ?>
+    <?php // echo $form->field($model, 'date') ?>
 
     <?php // echo $form->field($model, 'viewed') ?>
 

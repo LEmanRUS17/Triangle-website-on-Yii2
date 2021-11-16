@@ -1,16 +1,16 @@
 <?php
 
-namespace app\modules\blog\controllers;
+namespace app\modules\blog\controllers\backend;
 
-use app\modules\blog\models\Article;
+use app\modules\blog\models\backend\Article;
 use app\modules\blog\Module;
-use app\modules\blog\models\ArticleSearch;
+use app\modules\blog\models\backend\ArticleSearch;
 use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
-class ArticleController extends \yii\web\Controller
+class DefaultController extends \yii\web\Controller
 {
     /**
      * {@inheritdoc}

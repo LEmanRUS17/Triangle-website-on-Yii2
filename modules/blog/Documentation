@@ -1,0 +1,29 @@
+/controllers
+    DefaultController.php
+        - actionClassic()
+    ArticleController.php
+        - behaviors()
+        - actionIndex()
+        - actionView($id)
+        - actionCreate()
+        - actionUpdate($id)
+        - actionDelete($id)
+        - findModel($id)
+/messages
+    /ru
+        module.php
+/models
+    Article.php
+    ArticleSearch.php
+/views
+    /default
+        classic.php
+    /article
+        _form.php
+        _search.php
+        create.php
+        index.php
+        update.php
+        view.php
+Bootstrap.php
+Module.php

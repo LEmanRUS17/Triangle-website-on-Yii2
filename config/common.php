@@ -9,11 +9,12 @@ $params = ArrayHelper::merge(
 
 return [
     'basePath' => dirname(__DIR__),
-    'bootstrap' => [
+    'bootstrap' => [ // Подключение bootstrap к модулям (Нужен для перевода)
         'log',
         'app\modules\admin\Bootstrap',
         'app\modules\main\Bootstrap',
         'app\modules\user\Bootstrap',
+        'app\modules\blog\Bootstrap',
     ],
     'defaultRoute' => 'home/index',     // Дефолтный маршрут при запуске сайта
     'language'     => 'ru-RU',          // Язык
@@ -51,12 +52,25 @@ return [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
+//        'urlManagerBackend' => [
+//            'class' => 'yii\web\urlManager',
+//            'baseUrl' => '/admin/default/index',
+//            'enablePrettyUrl' => true,
+//            'showScriptName' => false,
+//        ],
+//        'urlManagerFrontend' => [
+//            'class' => 'yii\web\urlManager',
+//            'baseUrl' => '/index',
+//            'enablePrettyUrl' => true,
+//            'showScriptName' => false,
+//        ],
 
         'urlManager' => [
             'enablePrettyUrl'     => true,
             'showScriptName'      => false,
             'enableStrictParsing' => false, // Включить строгий разбор UPL. https://www.yiiframework.com/doc/api/2.0/yii-web-urlmanager#$enableStrictParsing-detail
-            'rules' => [/*
+            'rules' => [
+                /*
                 //'' => 'main/default/index',
                 'contact' => 'main/contact/index',
                 '<_a:error>' => 'main/default/<_a>',

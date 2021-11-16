@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\blog\controllers;
+namespace app\modules\blog\controllers\frontend;
 
 use yii\web\Controller;
 

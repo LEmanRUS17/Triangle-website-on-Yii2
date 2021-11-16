@@ -34,6 +34,6 @@ class Module extends \yii\base\Module
      */
     public static function t($category, $message, $params = [], $language = null)
     {
-        return Yii::t('modules/user/' . $category, $message, $params, $language);
+        return Yii::t('modules/blog/' . $category, $message, $params, $language);
     }
 }

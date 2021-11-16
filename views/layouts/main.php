@@ -136,8 +136,10 @@ AppAsset::register($this);
         </div>
     </section>
     <!-- Flash-сообщени -->
-    
-    <?= $content ?>
+
+    <div class="container article-index">
+        <?= $content ?>
+    </div>
 
     <footer id="footer">
         <div class="container">

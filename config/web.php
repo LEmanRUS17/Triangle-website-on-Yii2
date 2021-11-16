@@ -16,8 +16,17 @@ $config = [
             'modules' => [
                 'user' => [
                     'class' => 'app\modules\user\Module',
-                    'controllerNamespace' => 'app\modules\user\controllers\backend',
+                    'controllerNamespace' => [
+                        'app\modules\user\controllers\backend',
+                        ],
                     'viewPath' => '@app/modules/user/views/backend',
+                ],
+                'blog' => [
+                    'class' => 'app\modules\blog\Module',
+                    'controllerNamespace' => [
+                        'app\modules\bloc\controllers\backend',
+                    ],
+                    'viewPath' => '@app/modules/blog/views/backend',
                 ],
             ]
         ],
@@ -34,6 +43,8 @@ $config = [
         ],
         'blog' => [
             'class' => 'app\modules\blog\Module',
+            'controllerNamespace' => 'app\modules\blog\controllers\frontend',
+            'viewPath' => '@app/modules/blog/views/frontend',
         ],
     ],
     'components' => [

@@ -1,7 +1,8 @@
 <?php
 
-namespace app\modules\blog\models;
+namespace app\modules\blog\models\backend;
 
+use app\modules\blog\Module;
 use Yii;
 
 /**
@@ -19,6 +20,7 @@ use Yii;
 class Article extends \yii\db\ActiveRecord
 {
     /**
+     * Имя используемой таблицы
      * {@inheritdoc}
      */
     public static function tableName()
@@ -27,6 +29,7 @@ class Article extends \yii\db\ActiveRecord
     }
 
     /**
+     * Правила валидации
      * {@inheritdoc}
      */
     public function rules()
@@ -39,19 +42,20 @@ class Article extends \yii\db\ActiveRecord
     }
 
     /**
+     * Атрибуты
      * {@inheritdoc}
      */
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'title' => 'Title',
-            'description' => 'Description',
-            'content' => 'Content',
-            'date' => 'Date',
-            'viewed' => 'Viewed',
-            'status' => 'Status',
-            'category_id' => 'Category ID',
+            'id'          => Module::t('module', 'ARTICLE_MODEL_ID'),
+            'title'       => Module::t('module', 'ARTICLE_MODEL_TITLE'),
+            'description' => Module::t('module', 'ARTICLE_MODEL_DESCRIPTION'),
+            'content'     => Module::t('module', 'ARTICLE_MODEL_CONTENT'),
+            'date'        => Module::t('module', 'ARTICLE_MODEL_DATE'),
+            'viewed'      => Module::t('module', 'ARTICLE_MODEL_VIEWED'),
+            'status'      => Module::t('module', 'ARTICLE_MODEL_STATUS'),
+            'category_id' => Module::t('module', 'ARTICLE_MODEL_CATEGORY_ID'),
         ];
     }
 }
